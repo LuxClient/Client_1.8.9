@@ -5,6 +5,9 @@
   "refmap": "mixins.luxclient.json",
   "verbose": true,
   "mixins": [
-    "MixinMinecraft"
+    "client.MixinMinecraft",
+    "entity.MixinEntityPlayer",
+    "gui.MixinGuiIngame",
+    "render.MixinEntityRenderer"
   ]
 }
