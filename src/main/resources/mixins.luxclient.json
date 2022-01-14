@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "net.luxclient.mixins",
+  "refmap": "mixins.luxclient.json",
+  "verbose": true,
+  "mixins": [
+  ]
+}
