@@ -1,31 +1,36 @@
-[21:16:29] [main/INFO]: Extra: [--tweakClass, net.luxclient.launch.LuxTweaker]
-[21:16:29] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/marcd/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, net.luxclient.launch.LuxTweaker]
-[21:16:29] [main/INFO]: Loading tweak class name net.luxclient.launch.LuxTweaker
-[21:16:29] [main/INFO]: Using primary tweak class name net.luxclient.launch.LuxTweaker
-[21:16:29] [main/INFO]: Calling tweak class net.luxclient.launch.LuxTweaker
-[21:16:29] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/marcd/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.7.11-SNAPSHOT/7a670207bdb97db418118ad1e9bb42424ff3776d/mixin-0.7.11-SNAPSHOT.jar Service=LaunchWrapper Env=UNKNOWN
-[21:16:29] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
-[21:16:29] [main/INFO]: Compatibility level set to JAVA_8
-[21:16:29] [main/ERROR]: Mixin config mixins.luxclient.json does not specify "minVersion" property
-[21:16:29] [main/INFO]: Loading tweak class name org.spongepowered.asm.mixin.EnvironmentStateTweaker
-[21:16:29] [main/INFO]: Calling tweak class org.spongepowered.asm.mixin.EnvironmentStateTweaker
-[21:16:29] [main/INFO]: Remapping refMap mixins.luxclient.json using C:\Users\marcd\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
-[21:16:29] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
-[21:16:31] [Client thread/ERROR]: Can't find the resource index file: .\assets\indexes\1.8.json
-[21:16:31] [Client thread/INFO]: Setting user: Player609
-[21:16:31] [Client thread/INFO]: (Session ID is token:FML:Player609)
-[21:16:32] [Client thread/INFO]: LWJGL Version: 2.9.3
-[21:16:33] [Client thread/INFO]: Reloading ResourceManager: Default
-[21:16:34] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[21:16:34] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[21:16:34] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[21:16:34] [Thread-6/INFO]: OpenAL initialized.
-[21:16:34] [Sound Library Loader/INFO]: Sound engine started
-[21:16:36] [Client thread/INFO]: Created: 512x512 textures-atlas
-[21:16:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[21:16:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[21:16:42] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[21:16:42] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[21:16:42] [Client thread/INFO]: Stopping!
-[21:16:42] [Client thread/INFO]: SoundSystem shutting down...
-[21:16:42] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[21:32:47] [main/INFO]: Extra: [--tweakClass, net.luxclient.launch.LuxTweaker]
+[21:32:47] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/marcd/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, net.luxclient.launch.LuxTweaker]
+[21:32:47] [main/INFO]: Loading tweak class name net.luxclient.launch.LuxTweaker
+[21:32:47] [main/INFO]: Using primary tweak class name net.luxclient.launch.LuxTweaker
+[21:32:47] [main/INFO]: Calling tweak class net.luxclient.launch.LuxTweaker
+[21:32:47] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/marcd/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.7.11-SNAPSHOT/7a670207bdb97db418118ad1e9bb42424ff3776d/mixin-0.7.11-SNAPSHOT.jar Service=LaunchWrapper Env=UNKNOWN
+[21:32:48] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
+[21:32:48] [main/INFO]: Compatibility level set to JAVA_8
+[21:32:48] [main/ERROR]: Mixin config mixins.luxclient.json does not specify "minVersion" property
+[21:32:48] [main/INFO]: Loading tweak class name org.spongepowered.asm.mixin.EnvironmentStateTweaker
+[21:32:48] [main/INFO]: Calling tweak class org.spongepowered.asm.mixin.EnvironmentStateTweaker
+[21:32:48] [main/INFO]: Remapping refMap mixins.luxclient.json using C:\Users\marcd\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
+[21:32:48] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[21:32:48] [main/INFO]: Mixing MixinMinecraft from mixins.luxclient.json into net.minecraft.client.Minecraft
+[21:32:49] [Client thread/ERROR]: Can't find the resource index file: .\assets\indexes\1.8.json
+[21:32:49] [Client thread/INFO]: Setting user: Player375
+[21:32:49] [Client thread/INFO]: (Session ID is token:FML:Player375)
+[21:32:51] [Client thread/INFO]: LWJGL Version: 2.9.3
+[21:32:52] [Client thread/INFO]: Reloading ResourceManager: Default
+[21:32:52] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[21:32:52] [Thread-7/INFO]: Initializing LWJGL OpenAL
+[21:32:52] [Thread-7/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[21:32:52] [Thread-7/INFO]: OpenAL initialized.
+[21:32:52] [Sound Library Loader/INFO]: Sound engine started
+[21:32:54] [Client thread/INFO]: Created: 512x512 textures-atlas
+[21:33:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
+[21:33:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
+[21:33:00] [Client thread/INFO]: Realms library version == 1.7.59
+[21:33:00] [MCO Availability Checker #1/ERROR]: Couldn't connect to realms: 
+[21:33:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
+[21:33:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
+[21:33:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
+[21:33:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
+[21:33:07] [Client thread/INFO]: Stopping!
+[21:33:07] [Client thread/INFO]: SoundSystem shutting down...
+[21:33:07] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
