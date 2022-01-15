@@ -1,7 +1,6 @@
 package net.luxclient.mixins;
 
 import net.luxclient.LuxClient;
-import net.luxclient.ui.screens.UiMainMenu;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +13,6 @@ public class MixinMinecraft {
 
     @Inject(method = "startGame", at = @At("RETURN"))
     public void startGame(CallbackInfo callbackInfo) {
-        Minecraft.getMinecraft().displayGuiScreen(new UiMainMenu());
         LuxClient.initClient();
     }
 

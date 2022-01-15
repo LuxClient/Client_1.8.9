@@ -10,14 +10,14 @@ hex/event/ArrayHelper.java
  hex.event.ArrayHelper$1
 net/luxclient/LuxClient.java
  net.luxclient.LuxClient
-net/luxclient/mixins/MixinMinecraft.java
- net.luxclient.mixins.MixinMinecraft
+net/luxclient/events/Render2DEvent.java
+ net.luxclient.events.Render2DEvent
 net/luxclient/ui/screens/UiMainMenu.java
  net.luxclient.ui.screens.UiMainMenu
 net/luxclient/events/Render3DEvent.java
  net.luxclient.events.Render3DEvent
-net/luxclient/mixins/client/MixinMinecraft.java
- net.luxclient.mixins.client.MixinMinecraft
+net/luxclient/events/TickEvent.java
+ net.luxclient.events.TickEvent
 net/luxclient/ui/UiComponent.java
  net.luxclient.ui.UiComponent
 hex/event/Priority.java
@@ -39,7 +39,7 @@ net/luxclient/mixins/render/MixinEntityRenderer.java
 hex/event/Event.java
  hex.event.Event
  hex.event.Event$State
-net/luxclient/events/TickEvent.java
- net.luxclient.events.TickEvent
-net/luxclient/events/Render2DEvent.java
- net.luxclient.events.Render2DEvent
+net/luxclient/mixins/MixinMinecraft.java
+ net.luxclient.mixins.MixinMinecraft
+net/luxclient/mixins/client/MixinMinecraft.java
+ net.luxclient.mixins.client.MixinMinecraft

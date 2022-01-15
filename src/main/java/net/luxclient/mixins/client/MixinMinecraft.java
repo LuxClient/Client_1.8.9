@@ -4,6 +4,7 @@ import net.luxclient.LuxClient;
 import hex.event.Event;
 import net.luxclient.events.KeyPressEvent;
 import net.luxclient.events.TickEvent;
+import net.luxclient.ui.screens.UiMainMenu;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -17,6 +18,7 @@ public class MixinMinecraft {
 
     @Inject(method = "startGame", at = @At("RETURN"))
     public void startGame(CallbackInfo callbackInfo) {
+        Minecraft.getMinecraft().displayGuiScreen(new UiMainMenu());
         LuxClient.initClient();
     }
 
