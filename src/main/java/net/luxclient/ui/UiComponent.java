@@ -7,7 +7,7 @@ public abstract class UiComponent extends Gui {
     protected int x, y;
     protected int width, height;
     protected boolean enabled;
-    protected boolean visible;
+    protected boolean visible = true;
 
     public UiComponent(int x, int y, int width, int height) {
         this.x = x;

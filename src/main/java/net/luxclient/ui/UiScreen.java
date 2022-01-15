@@ -1,6 +1,8 @@
 package net.luxclient.ui;
 
+import net.luxclient.ui.components.buttons.UiButton;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -30,8 +32,8 @@ public abstract class UiScreen extends GuiScreen {
     }
 
     public abstract void renderScreen(int mouseX, int mouseY, boolean ingame);
-
     public abstract void initComponents();
+    public abstract void buttonClicked(UiButton button);
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -63,6 +65,24 @@ public abstract class UiScreen extends GuiScreen {
         this.componentList.clear();
         this.initComponents();
         super.initGui();
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        System.out.println(mouseButton);
+        if (mouseButton == 0)
+        {
+            for (int i = 0; i < this.componentList.size(); ++i)
+            {
+                UiButton button = (UiButton) this.componentList.get(i);
+
+                if (button.isHovered(mouseX, mouseY))
+                {
+                    this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+                    this.buttonClicked(button);
+                }
+            }
+        }
     }
 
     @Override
