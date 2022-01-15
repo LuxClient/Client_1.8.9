@@ -1,6 +1,6 @@
 package hex.event;
 
-import net.luxclient.util.ArrayHelper;
+import hex.event.ArrayHelper;
 
 import java.lang.reflect.InvocationTargetException;
 

@@ -1,7 +1,5 @@
 package hex.event;
 
-import net.luxclient.util.ArrayHelper;
-
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
