@@ -21,6 +21,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'io.franzbecker.gradle-lombok' version '5.0.0'
+}
+
 apply plugin: 'net.minecraftforge.gradle.tweaker-client'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
@@ -56,7 +60,6 @@ configurations {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.20'
     embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
