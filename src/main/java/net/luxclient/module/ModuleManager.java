@@ -27,8 +27,7 @@ public class ModuleManager {
 
     public ModuleManager() {
         dataFolder = new File("config" + File.separatorChar + "LuxClient");
-        gson = (new GsonBuilder()).setPrettyPrinting()
-                .addDeserializationExclusionStrategy(new ExcludeStrategy()).addSerializationExclusionStrategy(new ExcludeStrategy()).create();
+        gson = (new GsonBuilder()).setPrettyPrinting().setExclusionStrategies(new ExcludeStrategy()).create();
         Reflections reflection = new Reflections(toCheck);
         classes = reflection.getTypesAnnotatedWith(LuxModuleData.class);
         EventManager.register(this);
