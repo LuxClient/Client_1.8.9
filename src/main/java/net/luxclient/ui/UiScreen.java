@@ -69,7 +69,6 @@ public abstract class UiScreen extends GuiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        System.out.println(mouseButton);
         if (mouseButton == 0)
         {
             for (int i = 0; i < this.componentList.size(); ++i)

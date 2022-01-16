@@ -8,6 +8,7 @@
     "client.MixinMinecraft",
     "entity.MixinEntityPlayer",
     "gui.MixinGuiIngame",
-    "render.MixinEntityRenderer"
+    "render.MixinEntityRenderer",
+    "gui.MixinGuiMainMenu"
   ]
 }

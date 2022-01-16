@@ -43,12 +43,6 @@ public class UiImageButton extends UiButton {
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, c);
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.width + this.x, this.height + this.y, 5, lineWidth, outline.getRGB());
 
-        float f1 = (outline.getRGB() >> 24 & 0xFF) / 255.0F;
-        float f2 = (outline.getRGB() >> 16 & 0xFF) / 255.0F;
-        float f3 = (outline.getRGB() >> 8 & 0xFF) / 255.0F;
-        float f4 = (outline.getRGB() & 0xFF) / 255.0F;
-        GL11.glColor4f(f2, f3, f4, f1);
-
         Minecraft.getMinecraft().getTextureManager().bindTexture(image);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 4, this.y + 4, 0, 0, this.width - 8, this.width - 8, this.width - 8, this.width - 8);
     }

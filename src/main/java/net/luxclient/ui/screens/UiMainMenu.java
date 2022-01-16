@@ -60,10 +60,11 @@ public class UiMainMenu extends UiScreen {
                 break;
 
             case 5:
+                String url = "https://www.luxclient.net/store/";
                 try {
-                    Desktop.getDesktop().browse(new URI("https://www.luxclient.net/store/"));
+                    Desktop.getDesktop().browse(new URI(url));
                 } catch (URISyntaxException | IOException e) {
-                    System.err.println("Unable to open URL!");
+                    System.err.println("Unable to open link: " + url);
                 }
                 break;
 
