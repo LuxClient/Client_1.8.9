@@ -60,7 +60,7 @@ public class UiMainMenu extends UiScreen {
                 break;
 
             case 5:
-                String url = "https://www.luxclient.net/store/";
+                String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
                 try {
                     Desktop.getDesktop().browse(new URI(url));
                 } catch (URISyntaxException | IOException e) {

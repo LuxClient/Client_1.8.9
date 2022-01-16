@@ -15,7 +15,6 @@ public class MixinEntityPlayer {
     @Inject(method = "attackTargetEntityWithCurrentItem", at = @At("RETURN"))
     public void attackTargetEntityWithCurrentItem(Entity targetEntity, CallbackInfo callbackInfo) {
         if (targetEntity != null) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Niggai"));
             System.out.println(Minecraft.class.getName());
             //new AttackEntityEvent(targetEntity).post();
         }
