@@ -1,5 +1,6 @@
 package net.luxclient;
 
+import net.luxclient.module.ModuleManager;
 import org.lwjgl.opengl.Display;
 
 public class LuxClient {
@@ -10,6 +11,7 @@ public class LuxClient {
 
     public static void initClient() {
         Display.setTitle(NAMEVER);
+        new ModuleManager().loadModules();
     }
 
     public static void shutdownClient() {
