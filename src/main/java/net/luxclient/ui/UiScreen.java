@@ -3,6 +3,7 @@ package net.luxclient.ui;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
 
@@ -25,6 +27,7 @@ public abstract class UiScreen extends GuiScreen {
     private ResourceLocation backgroundTexture;
 
     protected List<UiComponent> componentList;
+    protected GuiScreen parenScreen;
 
     public UiScreen() {
         this.backgroundTexture = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("background", new DynamicTexture(256, 256));
@@ -67,25 +70,40 @@ public abstract class UiScreen extends GuiScreen {
         super.initGui();
     }
 
+    public GuiScreen getParenScreen() {
+        return parenScreen;
+    }
+
+    public void setParenScreen(GuiScreen parenScreen) {
+        this.parenScreen = parenScreen;
+    }
+
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         if (mouseButton == 0)
         {
             for (int i = 0; i < this.componentList.size(); ++i)
             {
-                UiButton button = (UiButton) this.componentList.get(i);
+                if(this.componentList.get(i) instanceof UiButton) {
 
-                if (button.isHovered(mouseX, mouseY))
-                {
-                    this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-                    this.buttonClicked(button);
+                    UiButton button = (UiButton) this.componentList.get(i);
+
+                    if (button.isHovered(mouseX, mouseY))
+                    {
+                        this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+                        this.buttonClicked(button);
+                    }
                 }
             }
         }
     }
 
     @Override
-    protected void keyTyped(char typedChar, int keyCode) throws IOException {}
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        if(this.parenScreen != null && keyCode == Keyboard.KEY_ESCAPE) {
+            this.mc.displayGuiScreen(parenScreen);
+        }
+    }
 
     /**
      * Draws the main menu panorama

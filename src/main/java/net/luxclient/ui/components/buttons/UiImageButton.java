@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
@@ -40,8 +39,8 @@ public class UiImageButton extends UiButton {
 
         //perfect line width for every gui scale
         int lineWidth = (int) (new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor() * 1.5F);
-        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, c);
-        ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.width + this.x, this.height + this.y, 5, lineWidth, outline.getRGB());
+        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 2, c);
+        ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.width + this.x, this.height + this.y, 4, lineWidth, outline.getRGB());
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(image);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 4, this.y + 4, 0, 0, this.width - 8, this.width - 8, this.width - 8, this.width - 8);
