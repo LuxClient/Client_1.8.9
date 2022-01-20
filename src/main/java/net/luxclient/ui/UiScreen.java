@@ -3,7 +3,6 @@ package net.luxclient.ui;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -12,11 +11,9 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,6 +32,7 @@ public abstract class UiScreen extends GuiScreen {
     }
 
     public abstract void renderScreen(int mouseX, int mouseY, boolean ingame);
+
     public abstract void initComponents();
     public abstract void buttonClicked(UiButton button);
 
@@ -70,6 +68,11 @@ public abstract class UiScreen extends GuiScreen {
         super.initGui();
     }
 
+    @Override
+    public boolean doesGuiPauseGame() {
+        return false;
+    }
+
     public GuiScreen getParenScreen() {
         return parenScreen;
     }
@@ -95,13 +98,6 @@ public abstract class UiScreen extends GuiScreen {
                     }
                 }
             }
-        }
-    }
-
-    @Override
-    protected void keyTyped(char typedChar, int keyCode) throws IOException {
-        if(this.parenScreen != null && keyCode == Keyboard.KEY_ESCAPE) {
-            this.mc.displayGuiScreen(parenScreen);
         }
     }
 
