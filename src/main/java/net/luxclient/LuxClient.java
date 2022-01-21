@@ -4,8 +4,7 @@ import hex.event.EventManager;
 import hex.event.EventTarget;
 import net.luxclient.events.TickEvent;
 import net.luxclient.module.ModuleManager;
-import net.luxclient.ui.components.buttons.UiButton;
-import net.luxclient.ui.screens.settings.UiSettingsTab;
+import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
 
@@ -46,4 +45,14 @@ public class LuxClient {
     public static LuxClient getInstance() {
         return instance;
     }
+
+    public static class Fonts {
+
+        public static final CustomFontRenderer titleBold = new CustomFontRenderer("title_bold", 30);
+        public static final CustomFontRenderer titleThin = new CustomFontRenderer("title_thin", 30);
+        public static final CustomFontRenderer text = new CustomFontRenderer("normal", 16);
+        public static final CustomFontRenderer textBold = new CustomFontRenderer("normal_bold", 16);
+
+    }
+
 }

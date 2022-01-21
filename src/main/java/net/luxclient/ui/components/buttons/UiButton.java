@@ -1,5 +1,6 @@
 package net.luxclient.ui.components.buttons;
 
+import net.luxclient.LuxClient;
 import net.luxclient.ui.UiComponent;
 import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
@@ -47,7 +48,6 @@ public class UiButton extends UiComponent {
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.width + this.x, this.height + this.y, 4, lineWidth, outline.getRGB());
 
         this.drawCenteredString(Minecraft.getMinecraft().fontRendererObj, this.text.toUpperCase(), this.width / 2 + this.x, this.y + 5, outline.getRGB());
-
     }
 
     public String getText() {
