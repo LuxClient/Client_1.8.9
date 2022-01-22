@@ -47,7 +47,7 @@ public class UiButton extends UiComponent {
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 2, c);
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.width + this.x, this.height + this.y, 4, lineWidth, outline.getRGB());
 
-        this.drawCenteredString(Minecraft.getMinecraft().fontRendererObj, this.text.toUpperCase(), this.width / 2 + this.x, this.y + 5, outline.getRGB());
+        LuxClient.Fonts.text.drawCenteredString(this.text.toUpperCase(), this.x + this.width / 2, this.y + 4, -1);
     }
 
     public String getText() {

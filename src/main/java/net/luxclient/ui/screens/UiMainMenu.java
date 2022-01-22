@@ -20,7 +20,8 @@ public class UiMainMenu extends UiScreen {
         this.mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo/logo.png"));
         GL11.glColor3f(1.0F, 1.0F, 1.0F);
         Gui.drawModalRectWithCustomSizedTexture(this.width / 2 - 25, this.height/ 2 - 30 - 50, 0, 0, 50, 50, 50, 50);
-        this.drawCenteredString(mc.fontRendererObj, LuxClient.NAME.toUpperCase(), this.width / 2, this.height / 2 - 27, -1);
+
+        LuxClient.Fonts.titleBold.drawCenteredTextScaled(LuxClient.NAME.toUpperCase(), this.width / 2, this.height / 2 - 27, -1, 0.6F);
     }
 
     @Override

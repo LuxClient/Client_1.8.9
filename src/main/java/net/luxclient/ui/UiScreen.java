@@ -1,5 +1,6 @@
 package net.luxclient.ui;
 
+import net.luxclient.LuxClient;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -14,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,6 +38,10 @@ public abstract class UiScreen extends GuiScreen {
     public abstract void initComponents();
     public abstract void buttonClicked(UiButton button);
 
+    protected boolean renderVersionString() {
+        return true;
+    }
+
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         boolean ingame = Minecraft.getMinecraft().theWorld != null && Minecraft.getMinecraft().thePlayer != null;
@@ -44,6 +50,13 @@ public abstract class UiScreen extends GuiScreen {
             GlStateManager.disableAlpha();
             this.renderSkybox(mouseX, mouseY, partialTicks);
             GlStateManager.enableAlpha();
+        }
+
+        if(renderVersionString()) {
+            int c = new Color(255, 255, 255, 100).getRGB();
+            LuxClient.Fonts.textBold.drawStringScaled(LuxClient.NAMEVER, 5, this.height - 11, c, 0.8F);
+            String s = "Copyright Mojang AB. Do not distribute!";
+            LuxClient.Fonts.textBold.drawStringScaled(s, this.width + 22 - LuxClient.Fonts.textBold.getWidth(s), this.height - 11, c, 0.8F);
         }
 
         renderScreen(mouseX, mouseY, ingame);
