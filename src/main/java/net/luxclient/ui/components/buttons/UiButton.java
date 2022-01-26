@@ -3,10 +3,8 @@ package net.luxclient.ui.components.buttons;
 import net.luxclient.LuxClient;
 import net.luxclient.ui.UiComponent;
 import net.luxclient.util.ClientGuiUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class UiButton extends UiComponent {
 
@@ -39,13 +37,7 @@ public class UiButton extends UiComponent {
 
         }
 
-        Color c = new Color(255, 255, 255, 30 + hoverFade);
-        Color outline = new Color(255, 255, 255, 26);
-
-        //perfect line width for every gui scale
-        int lineWidth = (int) (new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor() * 1.5F);
-        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 2, c);
-        ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.width + this.x, this.height + this.y, 4, lineWidth, outline.getRGB());
+        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 4, new Color(255, 255, 255, 26 + hoverFade));
 
         LuxClient.Fonts.text.drawCenteredString(this.text.toUpperCase(), this.x + this.width / 2, this.y + 4, -1);
     }

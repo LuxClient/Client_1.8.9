@@ -26,12 +26,13 @@ public class UiMainMenu extends UiScreen {
 
     @Override
     public void initComponents() {
-        this.componentList.add(new UiButton(0, this.width / 2 - 82, this.height / 2 - 10, 164, 18, "Singleplayer"));
-        this.componentList.add(new UiButton(1, this.width / 2 - 82, this.height / 2 + 12 , 164, 18, "Multiplayer"));
+        this.componentList.add(new UiButton(0, this.width / 2 - 66, this.height / 2 - 10, 132, 18, "Singleplayer"));
+        this.componentList.add(new UiButton(1, this.width / 2 - 66, this.height / 2 + 12 , 132, 18, "Multiplayer"));
+        this.componentList.add(new UiButton(3, this.width / 2 - 66, this.height / 2 + 34 , 132, 18, "Options"));
 
-        int buttonY = this.height - 24;
+        int buttonY = this.height / 2 + 56;
         this.componentList.add(new UiImageButton(2, this.width / 2 - 9, buttonY, new ResourceLocation("lux/icons/main_menu/lux_settings.png")));
-        this.componentList.add(new UiImageButton(3, this.width / 2 - 9 - 18 - 3, buttonY, new ResourceLocation("lux/icons/main_menu/settings.png")));
+        this.componentList.add(new UiImageButton(7, this.width / 2 - 9 - 18 - 3, buttonY, new ResourceLocation("lux/icons/main_menu/changelog.png")));
         this.componentList.add(new UiImageButton(4, this.width / 2 - 9 + 18 + 3, buttonY, new ResourceLocation("lux/icons/main_menu/language.png")));
         this.componentList.add(new UiImageButton(5, this.width / 2 - 9 - 18 - 3 - 18 - 3, buttonY, new ResourceLocation("lux/icons/main_menu/store.png")));
         this.componentList.add(new UiImageButton(6, this.width / 2 - 9 + 18 + 3 + 18 + 3, buttonY, new ResourceLocation("lux/icons/main_menu/close.png")));
@@ -71,6 +72,10 @@ public class UiMainMenu extends UiScreen {
 
             case 6:
                 this.mc.shutdown();
+                break;
+
+            case 7:
+                break;
 
             default:
                 break;
