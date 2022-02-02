@@ -18,7 +18,7 @@ public abstract class UiComponent extends Gui {
 
     public abstract void renderComponent(int mouseX, int mouseY, boolean ingame);
 
-    protected boolean isHovered(int mouseX, int mouseY) {
+    public boolean isHovered(int mouseX, int mouseY) {
         return mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
     }
 

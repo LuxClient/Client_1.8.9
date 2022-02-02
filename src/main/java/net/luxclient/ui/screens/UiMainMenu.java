@@ -2,18 +2,23 @@ package net.luxclient.ui.screens;
 
 import net.luxclient.LuxClient;
 import net.luxclient.ui.UiScreen;
+import net.luxclient.ui.components.UiAccountPanel;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.luxclient.ui.components.buttons.UiImageButton;
+import net.luxclient.ui.screens.account.UiLoginSelection;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 public class UiMainMenu extends UiScreen {
+
+    private UiAccountPanel accountPanel;
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
@@ -37,6 +42,8 @@ public class UiMainMenu extends UiScreen {
         this.componentList.add(new UiImageButton(5, this.width / 2 - 9 - 18 - 3 - 18 - 3, buttonY, new ResourceLocation("lux/icons/main_menu/store.png")));
         this.componentList.add(new UiImageButton(6, this.width / 2 - 9 + 18 + 3 + 18 + 3, buttonY, new ResourceLocation("lux/icons/main_menu/close.png")));
 
+        this.accountPanel = new UiAccountPanel(5, 5, Minecraft.getMinecraft().getSession());
+        this.componentList.add(accountPanel);
     }
 
     @Override
@@ -82,4 +89,11 @@ public class UiMainMenu extends UiScreen {
         }
     }
 
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        if(this.accountPanel.isHovered(mouseX, mouseY)) {
+            this.mc.displayGuiScreen(new UiLoginSelection());
+        }
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+    }
 }
