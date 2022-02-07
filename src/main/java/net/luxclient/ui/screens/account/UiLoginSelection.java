@@ -40,4 +40,5 @@ public class UiLoginSelection extends UiScreen {
 
         Minecraft.getMinecraft().displayGuiScreen(new UiLogin(method));
     }
+
 }

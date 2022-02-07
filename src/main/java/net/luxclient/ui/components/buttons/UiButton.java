@@ -39,7 +39,7 @@ public class UiButton extends UiComponent {
 
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 4, new Color(255, 255, 255, 26 + hoverFade));
 
-        LuxClient.Fonts.text.drawCenteredString(this.text.toUpperCase(), this.x + this.width / 2, this.y + 4, -1);
+        LuxClient.Fonts.text.drawCenteredString(this.text.toUpperCase(), this.x + this.width / 2, this.y + (this.height - 10) / 2, -1);
     }
 
     public String getText() {
