@@ -1,21 +1,23 @@
 package net.luxclient.mixins.client;
 
-import net.luxclient.LuxClient;
 import hex.event.Event;
+import net.luxclient.LuxClient;
 import net.luxclient.events.KeyPressEvent;
 import net.luxclient.events.TickEvent;
-import net.luxclient.ui.screens.UiMainMenu;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.Session;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
 public class MixinMinecraft {
+
+    @Shadow public Session session;
 
     @Inject(method = "startGame", at = @At("RETURN"))
     public void startGame(CallbackInfo callbackInfo) {
@@ -27,7 +29,7 @@ public class MixinMinecraft {
         LuxClient.shutdownClient();
     }
 
-    @Inject(method = "createDisplay", at = @At("RETURN"))
+    @Inject(method = "createDisplay", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;setTitle(Ljava/lang/String;)V", shift = At.Shift.AFTER))
     public void createDisplay(CallbackInfo callbackInfo) {
         Display.setTitle(LuxClient.NAMEVER + " starting...");
     }

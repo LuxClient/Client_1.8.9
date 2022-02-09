@@ -53,7 +53,7 @@ public class UiLogin extends UiScreen {
 
             this.componentList.add(new UiButton(2, this.width / 2 - 70, this.height / 2 + 26, 67, 12, "SELECT"));
             this.componentList.add(new UiButton(0, this.width / 2 + 2, this.height / 2 + 26, 67, 12, "BACK"));
-
+            
         }
     }
 
