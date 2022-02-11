@@ -3,7 +3,6 @@ package net.luxclient.ui.screens.settings;
 import net.luxclient.ui.UiScreen;
 import net.luxclient.util.ClientGuiUtils;
 
-import java.awt.Color;
 import java.io.IOException;
 
 public abstract class UiSettingsTab extends UiScreen {
@@ -25,14 +24,10 @@ public abstract class UiSettingsTab extends UiScreen {
             offsetY = mouseY - dragY;
         }
 
-        ClientGuiUtils.drawRoundedRect(dragX - 1, dragY - 1, 352, 202, 5, new Color(12, 12, 12, 55));
-        ClientGuiUtils.drawRoundedRect(dragX, dragY, 350, 200, 5, new Color(12, 12, 12, 55));
+        ClientGuiUtils.drawRoundedRect(dragX, dragY, 350, 200, 5, ClientGuiUtils.brandingBackgroundColor);
 
-        ClientGuiUtils.drawRoundedRect(dragX + 4, dragY + 24, 87, 172, 5, new Color(120, 120, 120, 50));
-        ClientGuiUtils.drawRoundedRect(dragX + 5, dragY + 25, 85, 170, 5, new Color(120, 120, 120, 50));
-
-        ClientGuiUtils.drawRoundedRect(dragX + 94, dragY + 24, 252, 172, 5, new Color(120, 120, 120, 50));
-        ClientGuiUtils.drawRoundedRect(dragX + 95, dragY + 25, 250, 170, 5, new Color(120, 120, 120, 50));
+        ClientGuiUtils.drawRoundedRect(dragX + 5, dragY + 25, 85, 170, 5, ClientGuiUtils.brandingSecondBackgroundColor);
+        ClientGuiUtils.drawRoundedRect(dragX + 95, dragY + 25, 250, 170, 5, ClientGuiUtils.brandingSecondBackgroundColor);
     }
 
     @Override
@@ -65,4 +60,3 @@ public abstract class UiSettingsTab extends UiScreen {
         super.keyTyped(typedChar, keyCode);
     }
 }
-

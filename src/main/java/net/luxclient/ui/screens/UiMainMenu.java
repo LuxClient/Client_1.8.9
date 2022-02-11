@@ -6,6 +6,7 @@ import net.luxclient.ui.components.UiAccountPanel;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.luxclient.ui.components.buttons.UiImageButton;
 import net.luxclient.ui.screens.account.UiLoginSelection;
+import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.ResourceLocation;
@@ -22,6 +23,7 @@ public class UiMainMenu extends UiScreen {
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
+        ClientGuiUtils.drawRoundedRect(this.width / 2 - 75, this.height / 2 - 90, 150, 170, 5, ClientGuiUtils.brandingBackgroundColor);
         this.mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo/logo.png"));
         GL11.glColor3f(1.0F, 1.0F, 1.0F);
         Gui.drawModalRectWithCustomSizedTexture(this.width / 2 - 25, this.height/ 2 - 30 - 50, 0, 0, 50, 50, 50, 50);

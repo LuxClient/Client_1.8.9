@@ -8,13 +8,11 @@ import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
-import java.awt.*;
-
 public class UiLoginSelection extends UiScreen {
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
-        ClientGuiUtils.drawRoundedRect(this.width / 2 - 90, this.height / 2 - 50, 180, 115, 3, new Color(0, 0, 0, 107));
+        ClientGuiUtils.drawRoundedRect(this.width / 2 - 90, this.height / 2 - 50, 180, 115, 3, ClientGuiUtils.brandingBackgroundColor);
         LuxClient.Fonts.titleThin.drawCenteredTextScaled("LOGIN", this.width / 2, this.height / 2 - 45, -1, 0.6);
     }
 

@@ -3,6 +3,7 @@ package net.luxclient.ui.components.buttons;
 import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
@@ -33,8 +34,10 @@ public class UiImageButton extends UiButton {
 
         }
 
-        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 4, new Color(255, 255, 255, 26 + hoverFade));
+        Color c = new Color(ClientGuiUtils.brandingForegroundColor.getRed(), ClientGuiUtils.brandingForegroundColor.getGreen(), ClientGuiUtils.brandingForegroundColor.getBlue(), ClientGuiUtils.brandingForegroundColor.getAlpha() + hoverFade);
+        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 4, c);
 
+        GlStateManager.color(1.0F, 1.0F, 1.0F);
         Minecraft.getMinecraft().getTextureManager().bindTexture(image);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 4, this.y + 4, 0, 0, this.width - 8, this.width - 8, this.width - 8, this.width - 8);
     }

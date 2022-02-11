@@ -32,8 +32,7 @@ public class UiAccountPanel extends UiComponent {
 
         }
 
-        Color c = new Color(255, 255, 255, 26 + hoverFade);
-
+        Color c = new Color(ClientGuiUtils.brandingForegroundColor.getRed(), ClientGuiUtils.brandingForegroundColor.getGreen(), ClientGuiUtils.brandingForegroundColor.getBlue(), ClientGuiUtils.brandingForegroundColor.getAlpha() + hoverFade);
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 4, c);
         ClientGuiUtils.drawRoundedRect(this.x + 1, this.y + 1, 18, 18, 3, c);
 

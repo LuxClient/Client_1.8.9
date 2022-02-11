@@ -19,7 +19,7 @@ public class UiLogin extends UiScreen {
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
-        Color background = new Color(0, 0, 0, 107);
+        Color background = ClientGuiUtils.brandingBackgroundColor;
 
         if(loginMethod == LoginMethod.MICROSOFT) {
             ClientGuiUtils.drawRoundedRect(this.width / 2 - 50, this.height / 2 - 25, 100, 50, 3, background);
