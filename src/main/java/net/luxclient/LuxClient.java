@@ -46,7 +46,7 @@ public class LuxClient {
 
                 @Override
                 public void initComponents() {
-
+                    super.initComponents();
                 }
 
                 @Override

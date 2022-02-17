@@ -1,9 +1,17 @@
 package net.luxclient.ui.screens.settings;
 
+import net.luxclient.ui.UiComponent;
 import net.luxclient.ui.UiScreen;
+import net.luxclient.ui.components.buttons.UiButton;
 import net.luxclient.util.ClientGuiUtils;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 public abstract class UiSettingsTab extends UiScreen {
 
@@ -11,8 +19,13 @@ public abstract class UiSettingsTab extends UiScreen {
     protected boolean windowDragged = false;
 
     private int offsetX, offsetY;
+    protected List<UiComponent> draggedComponents;
 
     protected abstract String getWindowName();
+
+    public UiSettingsTab() {
+        this.draggedComponents = new LinkedList<>();
+    }
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
@@ -24,10 +37,27 @@ public abstract class UiSettingsTab extends UiScreen {
             offsetY = mouseY - dragY;
         }
 
-        ClientGuiUtils.drawRoundedRect(dragX, dragY, 350, 200, 5, ClientGuiUtils.brandingBackgroundColor);
+        GL11.glPushMatrix();
+        GlStateManager.enableAlpha();
+        GL11.glTranslatef(dragX, dragY, this.zLevel);
 
-        ClientGuiUtils.drawRoundedRect(dragX + 5, dragY + 25, 85, 170, 5, ClientGuiUtils.brandingSecondBackgroundColor);
-        ClientGuiUtils.drawRoundedRect(dragX + 95, dragY + 25, 250, 170, 5, ClientGuiUtils.brandingSecondBackgroundColor);
+        ClientGuiUtils.drawRoundedRect(0, 0, 350, 200, 5, ClientGuiUtils.brandingBackgroundColor);
+
+        ClientGuiUtils.drawRoundedRect(5, 25, 85, 170, 5, ClientGuiUtils.brandingSecondBackgroundColor);
+        ClientGuiUtils.drawRoundedRect(95, 25, 250, 170, 5, ClientGuiUtils.brandingSecondBackgroundColor);
+
+        for (UiComponent c : this.draggedComponents) {
+            if(c.isVisible()) {
+                c.renderComponent(mouseX, mouseY, ingame);
+            }
+        }
+
+        GL11.glPopMatrix();
+    }
+
+    @Override
+    public void initComponents() {
+        this.draggedComponents.clear();
     }
 
     @Override
@@ -40,8 +70,25 @@ public abstract class UiSettingsTab extends UiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        if(mouseX >= dragX - 2 && mouseY >= dragY - 2 && mouseX < dragX + 354 && mouseY < dragY + 29) {
+        if(mouseX >= dragX - 1 && mouseY >= dragY - 1 && mouseX < dragX + 352 && mouseY < dragY + 27) {
             windowDragged = true;
+        }
+
+        if (mouseButton == 0)
+        {
+            for (int i = 0; i < this.draggedComponents.size(); ++i)
+            {
+                if(this.draggedComponents.get(i) instanceof UiButton) {
+
+                    UiButton button = (UiButton) this.draggedComponents.get(i);
+
+                    if (button.isHovered(mouseX, mouseY))
+                    {
+                        this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+                        this.buttonClicked(button);
+                    }
+                }
+            }
         }
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
