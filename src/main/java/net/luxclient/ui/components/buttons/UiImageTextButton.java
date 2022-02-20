@@ -44,6 +44,6 @@ public class UiImageTextButton extends UiImageButton {
         Minecraft.getMinecraft().getTextureManager().bindTexture(image);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 4, this.y + 4, 0, 0, this.height - 8, this.height - 8, this.height - 8, this.height - 8);
 
-        LuxClient.Fonts.text.drawString(this.text.toUpperCase(), this.x + this.height, this.y + this.height / 2 - LuxClient.Fonts.text.FONT_HEIGHT / 2, -1);
+        LuxClient.Fonts.text.drawString(this.text.toUpperCase(), this.x + this.height, this.y + (this.height - 10) / 2, -1);
     }
 }
