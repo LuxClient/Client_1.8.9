@@ -5,6 +5,7 @@ import hex.event.EventTarget;
 import net.luxclient.events.TickEvent;
 import net.luxclient.module.ModuleManager;
 import net.luxclient.ui.components.buttons.UiButton;
+import net.luxclient.ui.notification.NotificationHandler;
 import net.luxclient.ui.screens.settings.UiSettingsTab;
 import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
@@ -18,6 +19,7 @@ public class LuxClient {
                                 NAMEVER = NAME + " v" + VERSION;
 
     private static ModuleManager moduleManager;
+    private static NotificationHandler notificationHandler;
 
     public static void initClient() {
         instance = new LuxClient();
@@ -25,6 +27,8 @@ public class LuxClient {
 
         moduleManager = new ModuleManager();
         moduleManager.loadModules();
+
+        notificationHandler = new NotificationHandler();
 
         Display.setTitle(NAMEVER);
     }
@@ -59,6 +63,10 @@ public class LuxClient {
 
     public static ModuleManager getModuleManager() {
         return moduleManager;
+    }
+
+    public static NotificationHandler getNotificationHandler() {
+        return notificationHandler;
     }
 
     public static LuxClient getInstance() {

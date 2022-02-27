@@ -19,7 +19,7 @@ public class MixinMinecraft {
 
     @Shadow public Session session;
 
-    @Inject(method = "startGame", at = @At("RETURN"))
+    @Inject(method = "startGame", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiIngame;<init>(Lnet/minecraft/client/Minecraft;)V", shift = At.Shift.AFTER))
     public void startGame(CallbackInfo callbackInfo) {
         LuxClient.initClient();
     }
