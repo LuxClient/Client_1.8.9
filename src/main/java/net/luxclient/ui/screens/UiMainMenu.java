@@ -5,7 +5,6 @@ import net.luxclient.ui.UiScreen;
 import net.luxclient.ui.components.UiAccountPanel;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.luxclient.ui.components.buttons.UiImageButton;
-import net.luxclient.ui.screens.account.UiLoginSelection;
 import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
@@ -93,9 +92,7 @@ public class UiMainMenu extends UiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        if(this.accountPanel.isHovered(mouseX, mouseY)) {
-            this.mc.displayGuiScreen(new UiLoginSelection());
-        }
+        this.accountPanel.mouseClicked(mouseButton, mouseX, mouseY);
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 }
