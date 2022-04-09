@@ -63,16 +63,18 @@ public class CustomFontRenderer {
             return this.getFontFromInput("/assets/minecraft/lux/font/Inter-ExtraBold.ttf");
         }
         if (name.equalsIgnoreCase("title_thin")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Regular.ttf");
-        }
-        if (name.equalsIgnoreCase("normal")) {
             return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Light.ttf");
         }
-        if (name.equalsIgnoreCase("normal_bold")) {
+        if (name.equalsIgnoreCase("normal")) {
             return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Medium.ttf");
         }
-        System.out.println("sus");
-        return this.getFontFromInput("/assets/minecraft/lux/font/Inter-ExtraBold.ttf");
+        if (name.equalsIgnoreCase("normal_bold")) {
+            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-ExtraBold.ttf");
+        }
+        if(name.equalsIgnoreCase("mods")) {
+            return this.getFontFromInput("/assets/minecraft/lux/font/Montserrat-Regular");
+        }
+        return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Medium.ttf");
     }
 
     private Font getFontFromInput(final String path) throws IOException, FontFormatException {
