@@ -68,7 +68,7 @@ public abstract class UiSettingsTab extends UiScreen {
     @Override
     public void initComponents() {
         this.draggedComponents.clear();
-        this.draggedComponents.add(new UiImageTextButton(0, 10, 30, 90, 20, "MODS", new ResourceLocation("lux/icons/settings/tab_mods.png")) {
+        this.draggedComponents.add(new UiImageTextButton(0, 10, 30, 90, 20, "MODS", new ResourceLocation("lux/icons/settings/mods.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -77,7 +77,7 @@ public abstract class UiSettingsTab extends UiScreen {
                         mouseY < y + dragY + this.height;
             }
         });
-        this.draggedComponents.add(new UiImageTextButton(1, 10, 53, 90, 20, "SETTINGS", new ResourceLocation("lux/icons/settings/tab_settings.png")) {
+        this.draggedComponents.add(new UiImageTextButton(1, 10, 53, 90, 20, "SETTINGS", new ResourceLocation("lux/icons/settings/cog.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -86,7 +86,7 @@ public abstract class UiSettingsTab extends UiScreen {
                         mouseY < y + dragY + this.height;
             }
         });
-        this.draggedComponents.add(new UiImageTextButton(2, 10, 76, 90, 20, "COSMETICS", new ResourceLocation("lux/icons/settings/tab_cosmetics.png")) {
+        this.draggedComponents.add(new UiImageTextButton(2, 10, 76, 90, 20, "COSMETICS", new ResourceLocation("lux/icons/settings/shirt.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
