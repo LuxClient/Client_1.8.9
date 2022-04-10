@@ -64,7 +64,7 @@ public class UiSplashScreen {
 
         double progressWidth = ((double) currentStep / MAX_STEPS) * 180;
         if(progressWidth != 0)
-            ClientGuiUtils.drawRoundedRect(res.getScaledWidth() / 2 - 90, res.getScaledHeight() / 2 + 20, (int) progressWidth, 10, 3, ClientGuiUtils.brandingForegroundColor);
+            ClientGuiUtils.drawRoundedRect(res.getScaledWidth() / 2 - 90, res.getScaledHeight() / 2 + 19, (int) progressWidth, 12, 3, ClientGuiUtils.brandingForegroundColor);
 
         ClientGuiUtils.drawRoundedOutline(res.getScaledWidth() / 2 - 90, res.getScaledHeight() / 2 + 20, res.getScaledWidth() / 2 + 90, res.getScaledHeight() / 2 + 30, 4, res.getScaleFactor(), ClientGuiUtils.brandingForegroundOutline.getRGB());
         LuxClient.Fonts.text.drawCenteredTextScaled(currentText.toUpperCase(), res.getScaledWidth() / 2, res.getScaledHeight() / 2 + 32, ClientGuiUtils.brandingIconColor.getRGB(), 1.1F);
