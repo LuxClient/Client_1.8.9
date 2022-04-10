@@ -6,6 +6,7 @@ import net.luxclient.events.TickEvent;
 import net.luxclient.module.ModuleManager;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.luxclient.ui.notification.NotificationHandler;
+import net.luxclient.ui.screens.UiSplashScreen;
 import net.luxclient.ui.screens.settings.UiSettingsTab;
 import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
@@ -22,6 +23,8 @@ public class LuxClient {
     private static NotificationHandler notificationHandler;
 
     public static void initClient() {
+        UiSplashScreen.update("initialize client");
+
         instance = new LuxClient();
         EventManager.register(instance);
 
