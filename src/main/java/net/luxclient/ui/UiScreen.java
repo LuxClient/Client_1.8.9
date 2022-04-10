@@ -41,6 +41,7 @@ public abstract class UiScreen extends GuiScreen {
     protected boolean renderVersionString() {
         return true;
     }
+    protected boolean renderCopyrightString() { return true; }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -52,11 +53,13 @@ public abstract class UiScreen extends GuiScreen {
             GlStateManager.enableAlpha();
         }
 
+        int color = new Color(255, 255, 255, 100).getRGB();
         if(renderVersionString()) {
-            int c = new Color(255, 255, 255, 100).getRGB();
-            LuxClient.Fonts.textBold.drawStringScaled(LuxClient.NAMEVER, 5, this.height - 11, c, 0.8F);
-            String s = "Copyright Mojang AB. Do not distribute!";
-            LuxClient.Fonts.textBold.drawStringScaled(s, this.width + 22 - LuxClient.Fonts.textBold.getWidth(s), this.height - 11, c, 0.8F);
+            LuxClient.Fonts.text.drawString(LuxClient.NAMEVER.toUpperCase(), 5, this.height - 11, color);
+        }
+        if(renderCopyrightString()) {
+            String s = "COPYRIGHT MOJANG AB. DO NOT DISTRIBUTE!";
+            LuxClient.Fonts.text.drawString(s, this.width - LuxClient.Fonts.text.getWidth(s) - 5, this.height - 11, color);
         }
 
         renderScreen(mouseX, mouseY, ingame);
