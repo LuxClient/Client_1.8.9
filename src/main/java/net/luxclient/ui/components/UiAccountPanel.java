@@ -6,6 +6,7 @@ import net.luxclient.ui.screens.account.UiLoginSelection;
 import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Session;
@@ -16,33 +17,34 @@ public class UiAccountPanel extends UiComponent {
 
     private Session account;
 
-    private int hoverFade = 0;
+    private double hoverFade = 1.0;
 
     public UiAccountPanel(int x, int y, Session session) {
-        super(x, y, (int) LuxClient.Fonts.text.getWidth(Minecraft.getMinecraft().getSession().getUsername()) + 26, 20);
+        super(x, y, 100, 18);
         this.account = session;
     }
 
     @Override
     public void renderComponent(int mouseX, int mouseY, boolean ingame) {
         if(isHovered(mouseX, mouseY)) {
-            if(hoverFade < 25) hoverFade += 5;
+            if(hoverFade < 1.5) hoverFade += 0.05;
 
         } else {
-            if(hoverFade > 0) hoverFade -= 5;
+            if(hoverFade > 1.0) hoverFade -= 0.05;
 
         }
 
-        ClientGuiUtils.drawRoundedRect(this.x - 2, this.y - 2, this.width + 4, this.height + 4, 4, ClientGuiUtils.brandingBackgroundColor);
-        Color c = new Color(ClientGuiUtils.brandingForegroundColor.getRed(), ClientGuiUtils.brandingForegroundColor.getGreen(), ClientGuiUtils.brandingForegroundColor.getBlue(), ClientGuiUtils.brandingForegroundColor.getAlpha() + hoverFade);
-        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 4, c);
-        ClientGuiUtils.drawRoundedRect(this.x + 1, this.y + 1, 18, 18, 3, c);
+        Color c = new Color(ClientGuiUtils.brandingForegroundColor.getRed(), ClientGuiUtils.brandingForegroundColor.getGreen(), ClientGuiUtils.brandingForegroundColor.getBlue(), (int) (ClientGuiUtils.brandingForegroundColor.getAlpha() * hoverFade));
+        float lineWidth = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor();
+        ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, c);
+        ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.x + this.width, this.y + this.height, 4, lineWidth, ClientGuiUtils.brandingForegroundOutline.getRGB());
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lux/steve.png"));
         GlStateManager.color(1.0F, 1.0F, 1.0F);
-        Gui.drawModalRectWithCustomSizedTexture(this.x + 3, this.y + 3, 0, 0, 14, 14, 14, 14);
+        Gui.drawModalRectWithCustomSizedTexture(this.x + 3, this.y + 3, 0, 0, 12, 12, 12, 12);
 
-        LuxClient.Fonts.text.drawString(this.account.getUsername(), this.x + 20, this.y + 5, -1);
+        LuxClient.Fonts.text.drawString(this.account.getUsername(), this.x + 18, this.y + (this.height - 7) / 2, ClientGuiUtils.brandingIconColor.getRGB());
+
     }
 
     @Override

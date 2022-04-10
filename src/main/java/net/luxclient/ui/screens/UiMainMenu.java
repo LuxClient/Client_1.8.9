@@ -41,7 +41,7 @@ public class UiMainMenu extends UiScreen {
 
         this.componentList.add(new UiImageButton(6, this.width - 23, 5, new ResourceLocation("lux/icons/main_menu/close.png")));
 
-        this.accountPanel = new UiAccountPanel(5, 5, Minecraft.getMinecraft().getSession());
+        this.accountPanel = new UiAccountPanel(this.width - 128, 5, Minecraft.getMinecraft().getSession());
         this.componentList.add(accountPanel);
     }
 
