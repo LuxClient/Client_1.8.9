@@ -10,20 +10,22 @@ import net.minecraft.util.ResourceLocation;
 
 import java.awt.Color;
 
-public class UiImageTextButton extends UiImageButton {
+public class UiImageTextButton extends UiButton {
+
+    protected ResourceLocation image;
 
     private double hoverFade = 1.0;
 
     public UiImageTextButton(int id, int x, int y, String text, ResourceLocation image) {
-        super(id, x, y, image);
-        this.text = text;
+        super(id, x, y, text);
+        this.image = image;
         this.width = 160;
         this.height = 18;
     }
 
     public UiImageTextButton(int id, int x, int y, int width, int height, String text, ResourceLocation image) {
-        super(id, x, y, 0, image);
-        this.text = text;
+        super(id, x, y, width, height, text);
+        this.image = image;
         this.width = width;
         this.height = height;
     }

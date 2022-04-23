@@ -1,5 +1,6 @@
 package net.luxclient.ui.components.buttons;
 
+import net.luxclient.LuxClient;
 import net.luxclient.util.ClientGuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -7,22 +8,28 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class UiImageButton extends UiButton {
 
     protected ResourceLocation image;
 
+    private int textX, textY;
+
     private double hoverFade = 1.0;
 
-    public UiImageButton(int id, int x, int y, ResourceLocation image) {
-        super(id, x, y, 18, 18, "");
+    public UiImageButton(int id, int x, int y, ResourceLocation image, int textX, int textY, String displayText) {
+        super(id, x, y, 18, 18, displayText);
         this.image = image;
+        this.textX = textX;
+        this.textY = textY;
     }
 
-    public UiImageButton(int id, int x, int y, int size, ResourceLocation image) {
+    public UiImageButton(int id, int x, int y, int size, ResourceLocation image, int textX, int textY, String displayText) {
         super(id, x, y, size, size, "");
         this.image = image;
+        this.textX = textX;
+        this.textY = textY;
     }
 
     @Override
@@ -43,5 +50,17 @@ public class UiImageButton extends UiButton {
         GlStateManager.color(ClientGuiUtils.brandingIconColor.getRed(), ClientGuiUtils.brandingIconColor.getGreen(), ClientGuiUtils.brandingIconColor.getBlue(), ClientGuiUtils.brandingIconColor.getAlpha());
         Minecraft.getMinecraft().getTextureManager().bindTexture(image);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 4, this.y + 4, 0, 0, this.width - 8, this.width - 8, this.width - 8, this.width - 8);
+
+        if(!this.text.equals("") && isHovered(mouseX, mouseY))
+            this.renderDisplayText();
     }
+
+    private void renderDisplayText() {
+        int textWidth = (int) (LuxClient.Fonts.text.getWidth(this.text.toUpperCase()));
+        int textHeight = 7;
+
+        ClientGuiUtils.drawRoundedRect(this.textX - 2, this.textY - 1, textWidth + 4, textHeight + 2, 3, ClientGuiUtils.brandingForegroundColor);
+        LuxClient.Fonts.text.drawString(this.text.toUpperCase(), this.textX, this.textY, ClientGuiUtils.brandingIconColor.getRGB());
+    }
+
 }

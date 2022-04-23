@@ -34,12 +34,15 @@ public class UiMainMenu extends UiScreen {
         this.componentList.add(new UiButton(1, this.width / 2 - 70, this.height / 2 + 12 , 140, 18, "Multiplayer"));
 
         int buttonY = this.height - 23;
-        this.componentList.add(new UiImageButton(5, 5, buttonY, new ResourceLocation("lux/icons/main_menu/cart.png")));
-        this.componentList.add(new UiImageButton(7, 28, buttonY, new ResourceLocation("lux/icons/main_menu/changelog.png")));
-        this.componentList.add(new UiImageButton(2, 51, buttonY, new ResourceLocation("lux/icons/main_menu/bulb.png")));
-        this.componentList.add(new UiImageButton(3, 74, buttonY, new ResourceLocation("lux/icons/main_menu/cog.png")));
 
-        this.componentList.add(new UiImageButton(6, this.width - 23, 5, new ResourceLocation("lux/icons/main_menu/close.png")));
+        int displayTextX = 5;
+        int displayTextY = this.height - 35;
+        this.componentList.add(new UiImageButton(5, 5, buttonY, new ResourceLocation("lux/icons/main_menu/cart.png"), displayTextX, displayTextY, "Store"));
+        this.componentList.add(new UiImageButton(7, 28, buttonY, new ResourceLocation("lux/icons/main_menu/changelog.png"), displayTextX, displayTextY, "Patch Notes"));
+        this.componentList.add(new UiImageButton(2, 51, buttonY, new ResourceLocation("lux/icons/main_menu/bulb.png"), displayTextX, displayTextY, "Lux Setings"));
+        this.componentList.add(new UiImageButton(3, 74, buttonY, new ResourceLocation("lux/icons/main_menu/cog.png"), displayTextX, displayTextY, "Game Settings"));
+
+        this.componentList.add(new UiImageButton(6, this.width - 23, 5, new ResourceLocation("lux/icons/main_menu/close.png"), this.width - 21, 28, "Quit"));
 
         this.accountPanel = new UiAccountPanel(this.width - 128, 5, Minecraft.getMinecraft().getSession());
         this.componentList.add(accountPanel);
