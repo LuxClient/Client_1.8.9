@@ -58,7 +58,7 @@ public class LuxClient {
 
                 @Override
                 public void buttonClicked(UiButton button) {
-
+                    super.buttonClicked(button);
                 }
             });
         }

@@ -42,7 +42,7 @@ public class UiMainMenu extends UiScreen {
         this.componentList.add(new UiImageButton(2, 51, buttonY, new ResourceLocation("lux/icons/main_menu/bulb.png"), displayTextX, displayTextY, "Lux Setings"));
         this.componentList.add(new UiImageButton(3, 74, buttonY, new ResourceLocation("lux/icons/main_menu/cog.png"), displayTextX, displayTextY, "Game Settings"));
 
-        this.componentList.add(new UiImageButton(6, this.width - 23, 5, new ResourceLocation("lux/icons/main_menu/close.png"), this.width - 21, 28, "Quit"));
+        this.componentList.add(new UiImageButton(6, this.width - 23, 5, new ResourceLocation("lux/icons/close.png"), this.width - 21, 28, "Quit"));
 
         this.accountPanel = new UiAccountPanel(this.width - 128, 5, Minecraft.getMinecraft().getSession());
         this.componentList.add(accountPanel);

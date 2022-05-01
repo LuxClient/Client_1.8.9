@@ -15,7 +15,7 @@ public class ClientGuiUtils {
     public static Color brandingForegroundColor = new Color(255, 255, 255, 30),
                         brandingForegroundOutline = new Color(255, 255, 255, 150),
                         brandingBackgroundColor = new Color(0, 0, 0, 100),
-                        brandingSecondBackgroundColor =new Color(175, 175, 175, 39),
+                        brandingSecondBackgroundColor =new Color(175, 175, 175, 26),
                         brandingIconColor = new Color(255, 255, 255, 150);
 
     public static void drawRoundedRect(int x, int y, int width, int height, int cornerRadius, Color color) {

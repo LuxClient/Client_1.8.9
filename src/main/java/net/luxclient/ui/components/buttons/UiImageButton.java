@@ -14,7 +14,7 @@ public class UiImageButton extends UiButton {
 
     protected ResourceLocation image;
 
-    private int textX, textY;
+    protected int textX, textY;
 
     private double hoverFade = 1.0;
 
