@@ -66,7 +66,6 @@ public abstract class UiSettingsTab extends UiScreen {
             }
         }
 
-        GL11.glPopMatrix();
     }
 
     @Override

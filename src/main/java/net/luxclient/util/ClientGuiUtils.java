@@ -16,7 +16,10 @@ public class ClientGuiUtils {
                         brandingForegroundOutline = new Color(255, 255, 255, 150),
                         brandingBackgroundColor = new Color(0, 0, 0, 100),
                         brandingSecondBackgroundColor =new Color(175, 175, 175, 26),
-                        brandingIconColor = new Color(255, 255, 255, 150);
+                        brandingIconColor = new Color(255, 255, 255, 150),
+
+                        brandingEnabledColor = new Color(101, 220, 138, 200),
+                        brandingDisabledColor = new Color(248, 92, 92, 200);
 
     public static void drawRoundedRect(int x, int y, int width, int height, int cornerRadius, Color color) {
         Gui.drawRect(x, y + cornerRadius, x + cornerRadius, y + height - cornerRadius, color.getRGB());

@@ -1,6 +1,7 @@
 package net.luxclient.ui.screens;
 
 import net.luxclient.LuxClient;
+import net.luxclient.settings.SettingTabsManager;
 import net.luxclient.ui.UiScreen;
 import net.luxclient.ui.components.UiAccountPanel;
 import net.luxclient.ui.components.buttons.UiButton;
@@ -60,6 +61,7 @@ public class UiMainMenu extends UiScreen {
                 break;
 
             case 2:
+                SettingTabsManager.openCurrentScreen();
                 break;
 
             case 3:

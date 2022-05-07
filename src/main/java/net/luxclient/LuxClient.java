@@ -4,10 +4,9 @@ import hex.event.EventManager;
 import hex.event.EventTarget;
 import net.luxclient.events.TickEvent;
 import net.luxclient.module.ModuleManager;
-import net.luxclient.ui.components.buttons.UiButton;
+import net.luxclient.settings.SettingTabsManager;
 import net.luxclient.ui.notification.NotificationHandler;
 import net.luxclient.ui.screens.UiSplashScreen;
-import net.luxclient.ui.screens.settings.UiSettingsTab;
 import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
@@ -43,24 +42,7 @@ public class LuxClient {
     @EventTarget
     public void onTick(TickEvent event) {
         if(Minecraft.getMinecraft().gameSettings.keyBindings[33].isKeyDown()) {
-            Minecraft.getMinecraft().displayGuiScreen(new UiSettingsTab() {
-
-                // temporary gui
-                @Override
-                protected String getWindowName() {
-                    return null;
-                }
-
-                @Override
-                public void initComponents() {
-                    super.initComponents();
-                }
-
-                @Override
-                public void buttonClicked(UiButton button) {
-                    super.buttonClicked(button);
-                }
-            });
+            SettingTabsManager.openCurrentScreen();
         }
     }
 

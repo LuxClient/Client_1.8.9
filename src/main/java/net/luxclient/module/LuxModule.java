@@ -21,7 +21,7 @@ public abstract class LuxModule {
 
     private int keyCode = -1;
 
-//    private HudComponent hudComponent;
+    //private HudComponent hudComponent;
 
     public void setEnabled(boolean enabled) {
         if (this.forceDisabled)
