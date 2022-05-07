@@ -61,7 +61,7 @@ public class UiModButton {
 
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lux/icons/mods/test.png")); //TODO put mod icon here
-        Gui.drawModalRectWithCustomSizedTexture(this.x + this.width / 2 - 20, this.y + 2, 0, 0, 40, 40, 40, 40);
+        Gui.drawModalRectWithCustomSizedTexture(this.x + this.width / 2 - 17, this.y + 4, 0, 0, 34, 34, 34, 34);
         LuxClient.Fonts.text.drawCenteredString(this.mod.getName().toUpperCase(), this.x + this.width / 2, this.y + 40, ClientGuiUtils.brandingIconColor.getRGB());
     }
 
