@@ -22,7 +22,7 @@ public class UiMainMenu extends UiScreen {
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
-        this.mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo/logo.png"));
+        this.mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo.png"));
         GL11.glColor3f(1.0F, 1.0F, 1.0F);
         Gui.drawModalRectWithCustomSizedTexture(this.width / 2 - 26, this.height / 2 - 80, 0, 0, 52, 52, 52, 52);
 

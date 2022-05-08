@@ -54,7 +54,7 @@ public abstract class UiSettingsTab extends UiScreen {
         ClientGuiUtils.drawRoundedRect(110, 25, 235, 152, 5, ClientGuiUtils.brandingSecondBackgroundColor);
 
         GlStateManager.color(1.0F, 1.0F, 1.0F);
-        mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo/logo.png"));
+        mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo.png"));
         Gui.drawModalRectWithCustomSizedTexture(6, 6, 0, 0, 15, 15, 15, 15);
 
         LuxClient.Fonts.titleBold.drawStringScaled("LUX", 24, 9, -1, 0.53F);

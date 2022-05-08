@@ -56,7 +56,7 @@ public class UiSplashScreen {
         mc.getTextureManager().bindTexture(new ResourceLocation("lux/panorama/background.png"));
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, res.getScaledWidth(), res.getScaledHeight(), res.getScaledWidth(), res.getScaledHeight());
 
-        mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo/logo.png"));
+        mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo.png"));
         Gui.drawModalRectWithCustomSizedTexture(res.getScaledWidth() / 2 - 26, res.getScaledHeight() / 2 - 60, 0, 0, 52, 52, 52, 52);
         LuxClient.Fonts.titleBold.drawCenteredTextScaled(LuxClient.NAME.toUpperCase(), res.getScaledWidth() / 2, res.getScaledHeight() / 2 - 7, -1, 0.6F);
 
