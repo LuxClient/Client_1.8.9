@@ -1,7 +1,6 @@
-package net.luxclient.ui.screens.settings.tabs;
+package net.luxclient.ui.screens.settings.tabs.mods;
 
 import net.luxclient.module.impl.FullbrightModule;
-import net.luxclient.ui.components.buttons.UiModButton;
 import net.luxclient.ui.screens.settings.UiSettingsTab;
 import org.lwjgl.opengl.GL11;
 
@@ -11,7 +10,7 @@ public class UiTabMods extends UiSettingsTab {
 
     @Override
     public void initComponents() {
-        button1 = new UiModButton(new FullbrightModule(), 115, 30) {
+        button1 = new UiModButton(new FullbrightModule(), 115, 36) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&

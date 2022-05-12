@@ -1,4 +1,4 @@
-package net.luxclient.ui.components.buttons;
+package net.luxclient.ui.screens.settings.tabs.mods;
 
 import net.luxclient.LuxClient;
 import net.luxclient.module.LuxModule;

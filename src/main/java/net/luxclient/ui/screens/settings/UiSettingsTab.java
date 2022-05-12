@@ -1,6 +1,7 @@
 package net.luxclient.ui.screens.settings;
 
 import net.luxclient.LuxClient;
+import net.luxclient.settings.SettingTabsManager;
 import net.luxclient.ui.UiComponent;
 import net.luxclient.ui.UiScreen;
 import net.luxclient.ui.components.buttons.UiButton;
@@ -53,6 +54,8 @@ public abstract class UiSettingsTab extends UiScreen {
         ClientGuiUtils.drawRoundedRect(5, 25, 100, 152, 5, ClientGuiUtils.brandingSecondBackgroundColor);
         ClientGuiUtils.drawRoundedRect(110, 25, 235, 152, 5, ClientGuiUtils.brandingSecondBackgroundColor);
 
+        LuxClient.Fonts.textBold.drawStringScaled(this.getWindowName().toUpperCase(), 115, 28, ClientGuiUtils.brandingIconColor.getRGB(), 0.7F);
+
         GlStateManager.color(1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo.png"));
         Gui.drawModalRectWithCustomSizedTexture(6, 6, 0, 0, 15, 15, 15, 15);
@@ -90,6 +93,24 @@ public abstract class UiSettingsTab extends UiScreen {
             }
         });
         this.draggedComponents.add(new UiImageTextButton(2, 10, 72, 90, 18, "COSMETICS", new ResourceLocation("lux/icons/settings/shirt.png")) {
+            @Override
+            public boolean isHovered(int mouseX, int mouseY) {
+                return mouseX >= x + dragX &&
+                        mouseY >= y + dragY &&
+                        mouseX < x + dragX + this.width &&
+                        mouseY < y + dragY + this.height;
+            }
+        });
+        this.draggedComponents.add(new UiImageTextButton(6, 10, 93, 90, 18, "THEMES", new ResourceLocation("lux/icons/settings/brush.png")) {
+            @Override
+            public boolean isHovered(int mouseX, int mouseY) {
+                return mouseX >= x + dragX &&
+                        mouseY >= y + dragY &&
+                        mouseX < x + dragX + this.width &&
+                        mouseY < y + dragY + this.height;
+            }
+        });
+        this.draggedComponents.add(new UiImageTextButton(7, 10, 114, 90, 18, "SCREENSHOTS", new ResourceLocation("lux/icons/settings/camera.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -161,6 +182,22 @@ public abstract class UiSettingsTab extends UiScreen {
 
     @Override
     public void buttonClicked(UiButton button) {
+        if(button.getId() == 0) {
+            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_MODS);
+        }
+        if(button.getId() == 1) {
+            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_SETTINGS);
+        }
+        if(button.getId() == 2) {
+            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_COSMETICS);
+        }
+        if(button.getId() == 6) {
+            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_THEMES);
+        }
+        if(button.getId() == 7) {
+            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_SCREENSHOTS);
+        }
+
         if(button.getId() == 4) {
             this.mc.displayGuiScreen(null);
         }
