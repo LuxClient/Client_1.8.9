@@ -49,10 +49,10 @@ public abstract class UiSettingsTab extends UiScreen {
         GlStateManager.enableAlpha();
         GL11.glTranslatef(dragX, dragY, this.zLevel);
 
-        ClientGuiUtils.drawRoundedRect(0, 0, 350, 182, 5, ClientGuiUtils.brandingBackgroundColor);
+        ClientGuiUtils.drawRoundedRect(0, 0, 350, 184, 5, ClientGuiUtils.brandingBackgroundColor);
 
-        ClientGuiUtils.drawRoundedRect(5, 25, 100, 152, 5, ClientGuiUtils.brandingSecondBackgroundColor);
-        ClientGuiUtils.drawRoundedRect(110, 25, 235, 152, 5, ClientGuiUtils.brandingSecondBackgroundColor);
+        ClientGuiUtils.drawRoundedRect(5, 25, 100, 154, 5, ClientGuiUtils.brandingSecondBackgroundColor);
+        ClientGuiUtils.drawRoundedRect(110, 25, 235, 154, 5, ClientGuiUtils.brandingSecondBackgroundColor);
 
         LuxClient.Fonts.textBold.drawStringScaled(this.getWindowName().toUpperCase(), 115, 28, ClientGuiUtils.brandingIconColor.getRGB(), 0.7F);
 
@@ -74,7 +74,7 @@ public abstract class UiSettingsTab extends UiScreen {
     @Override
     public void initComponents() {
         this.draggedComponents.clear();
-        this.draggedComponents.add(new UiImageTextButton(0, 10, 30, 90, 18, "MODS", new ResourceLocation("lux/icons/settings/mods.png")) {
+        this.draggedComponents.add(new UiImageTextButton(0, 10, 30, 90, 17, "MODS", new ResourceLocation("lux/icons/settings/mods.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -83,7 +83,7 @@ public abstract class UiSettingsTab extends UiScreen {
                         mouseY < y + dragY + this.height;
             }
         });
-        this.draggedComponents.add(new UiImageTextButton(1, 10, 51, 90, 18, "SETTINGS", new ResourceLocation("lux/icons/settings/cog.png")) {
+        this.draggedComponents.add(new UiImageTextButton(1, 10, 50, 90, 17, "SETTINGS", new ResourceLocation("lux/icons/settings/cog.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -92,7 +92,7 @@ public abstract class UiSettingsTab extends UiScreen {
                         mouseY < y + dragY + this.height;
             }
         });
-        this.draggedComponents.add(new UiImageTextButton(2, 10, 72, 90, 18, "COSMETICS", new ResourceLocation("lux/icons/settings/shirt.png")) {
+        this.draggedComponents.add(new UiImageTextButton(2, 10, 70, 90, 17, "COSMETICS", new ResourceLocation("lux/icons/settings/shirt.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -101,7 +101,7 @@ public abstract class UiSettingsTab extends UiScreen {
                         mouseY < y + dragY + this.height;
             }
         });
-        this.draggedComponents.add(new UiImageTextButton(6, 10, 93, 90, 18, "THEMES", new ResourceLocation("lux/icons/settings/brush.png")) {
+        this.draggedComponents.add(new UiImageTextButton(6, 10, 90, 90, 17, "WAYPOINTS", new ResourceLocation("lux/icons/settings/marker.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -110,7 +110,7 @@ public abstract class UiSettingsTab extends UiScreen {
                         mouseY < y + dragY + this.height;
             }
         });
-        this.draggedComponents.add(new UiImageTextButton(7, 10, 114, 90, 18, "SCREENSHOTS", new ResourceLocation("lux/icons/settings/camera.png")) {
+        this.draggedComponents.add(new UiImageTextButton(7, 10, 110, 90, 17, "SCREENSHOTS", new ResourceLocation("lux/icons/settings/camera.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -120,7 +120,7 @@ public abstract class UiSettingsTab extends UiScreen {
             }
         });
 
-        this.draggedComponents.add(new UiImageTextButton(3, 10, 154, 90, 18, "HUD EDITOR", new ResourceLocation("lux/icons/settings/hud.png")) {
+        this.draggedComponents.add(new UiImageTextButton(3, 10, 157, 90, 17, "HUD EDITOR", new ResourceLocation("lux/icons/settings/hud.png")) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -192,7 +192,7 @@ public abstract class UiSettingsTab extends UiScreen {
             SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_COSMETICS);
         }
         if(button.getId() == 6) {
-            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_THEMES);
+            SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_WAYPOINTS);
         }
         if(button.getId() == 7) {
             SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_SCREENSHOTS);
