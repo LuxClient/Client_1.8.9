@@ -242,4 +242,9 @@ public abstract class UiSettingsTab extends UiScreen {
         }
         super.keyTyped(typedChar, keyCode);
     }
+
+    @Override
+    public boolean doesGuiPauseGame() {
+        return true;
+    }
 }
