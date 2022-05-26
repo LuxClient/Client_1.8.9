@@ -70,7 +70,7 @@ public class CustomFontRenderer {
             return this.getFontFromInput("/assets/minecraft/lux/font/Calibri-Bold.ttf");
         }
         if(name.equalsIgnoreCase("mods")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Montserrat-Regular.ttf");
+            return this.getFontFromInput("/assets/minecraft/lux/font/SFUIText-Semibold.ttf");
         }
         return this.getFontFromInput("/assets/minecraft/lux/font/SegoeUI.ttf");
     }

@@ -2,6 +2,7 @@ package net.luxclient.ui.screens;
 
 import net.luxclient.LuxClient;
 import net.luxclient.util.ClientGuiUtils;
+import net.luxclient.util.ClientPanorama;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -53,7 +54,7 @@ public class UiSplashScreen {
     }
 
     private static void drawScreen(ScaledResolution res) {
-        mc.getTextureManager().bindTexture(new ResourceLocation("lux/panorama/background.png"));
+        mc.getTextureManager().bindTexture(ClientPanorama.getBackground());
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, res.getScaledWidth(), res.getScaledHeight(), res.getScaledWidth(), res.getScaledHeight());
 
         mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo.png"));

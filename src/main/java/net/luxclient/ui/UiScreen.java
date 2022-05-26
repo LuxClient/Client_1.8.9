@@ -2,6 +2,7 @@ package net.luxclient.ui;
 
 import net.luxclient.LuxClient;
 import net.luxclient.ui.components.buttons.UiButton;
+import net.luxclient.util.ClientPanorama;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;
@@ -21,7 +22,6 @@ import java.util.List;
 
 public abstract class UiScreen extends GuiScreen {
 
-    private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("lux/panorama/normal/panorama_0.png"), new ResourceLocation("lux/panorama/normal/panorama_1.png"), new ResourceLocation("lux/panorama/normal/panorama_2.png"), new ResourceLocation("lux/panorama/normal/panorama_3.png"), new ResourceLocation("lux/panorama/normal/panorama_4.png"), new ResourceLocation("lux/panorama/normal/panorama_5.png")};
     private static int panoramaTimer;
     private ResourceLocation backgroundTexture;
 
@@ -180,7 +180,7 @@ public abstract class UiScreen extends GuiScreen {
                     GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
                 }
 
-                this.mc.getTextureManager().bindTexture(titlePanoramaPaths[k]);
+                this.mc.getTextureManager().bindTexture(ClientPanorama.getTiles()[k]);
                 worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
                 int l = 255 / (j + 1);
                 float f3 = 0.0F;

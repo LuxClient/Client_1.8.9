@@ -103,4 +103,5 @@ public class UiMainMenu extends UiScreen {
     protected boolean renderVersionString() {
         return false;
     }
+
 }
