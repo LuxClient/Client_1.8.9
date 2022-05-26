@@ -44,7 +44,7 @@ public class UiButton extends UiComponent {
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, c);
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.x + this.width, this.y + this.height, 4, lineWidth, ClientGuiUtils.brandingForegroundOutline.getRGB());
 
-        LuxClient.Fonts.text.drawCenteredString(this.text.toUpperCase(), this.x + this.width / 2, this.y + (this.height - 7) / 2, ClientGuiUtils.brandingIconColor.getRGB());
+        LuxClient.Fonts.text.drawCenteredString(this.text.toUpperCase(), this.x + this.width / 2, (float) (this.y + (this.height - 6.5) / 2), ClientGuiUtils.brandingIconColor.getRGB());
     }
 
     public String getText() {

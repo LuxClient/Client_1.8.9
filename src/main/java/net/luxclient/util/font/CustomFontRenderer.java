@@ -57,24 +57,22 @@ public class CustomFontRenderer {
     }
 
     private Font getFontByName(final String name) throws IOException, FontFormatException {
-        // change "name.equalsIgnoreCase("font name")
-        // change "return this.getFontFromInput("/assets/minecraft/myuwuclient/fonts/my_uwu_font.ttf");"
         if (name.equalsIgnoreCase("title_bold")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-ExtraBold.ttf");
+            return this.getFontFromInput("/assets/minecraft/lux/font/SegoeUI-Bold.ttf");
         }
         if (name.equalsIgnoreCase("title_thin")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Light.ttf");
+            return this.getFontFromInput("/assets/minecraft/lux/font/SegoeUI.ttf");
         }
         if (name.equalsIgnoreCase("normal")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Medium.ttf");
+            return this.getFontFromInput("/assets/minecraft/lux/font/Product-Sans.ttf");
         }
         if (name.equalsIgnoreCase("normal_bold")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-ExtraBold.ttf");
+            return this.getFontFromInput("/assets/minecraft/lux/font/Calibri-Bold.ttf");
         }
         if(name.equalsIgnoreCase("mods")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Montserrat-Regular");
+            return this.getFontFromInput("/assets/minecraft/lux/font/Montserrat-Regular.ttf");
         }
-        return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Medium.ttf");
+        return this.getFontFromInput("/assets/minecraft/lux/font/SegoeUI.ttf");
     }
 
     private Font getFontFromInput(final String path) throws IOException, FontFormatException {

@@ -43,7 +43,7 @@ public class UiAccountPanel extends UiComponent {
         GlStateManager.color(1.0F, 1.0F, 1.0F);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 3, this.y + 3, 0, 0, 12, 12, 12, 12);
 
-        LuxClient.Fonts.text.drawString(this.account.getUsername(), this.x + 18, this.y + (this.height - 7) / 2, ClientGuiUtils.brandingIconColor.getRGB());
+        LuxClient.Fonts.text.drawString(this.account.getUsername(), this.x + 18, (float) (this.y + (this.height - 6.5) / 2), ClientGuiUtils.brandingIconColor.getRGB());
 
     }
 

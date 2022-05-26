@@ -54,14 +54,14 @@ public abstract class UiSettingsTab extends UiScreen {
         ClientGuiUtils.drawRoundedRect(5, 25, 100, 154, 5, ClientGuiUtils.brandingSecondBackgroundColor);
         ClientGuiUtils.drawRoundedRect(110, 25, 235, 154, 5, ClientGuiUtils.brandingSecondBackgroundColor);
 
-        LuxClient.Fonts.textBold.drawStringScaled(this.getWindowName().toUpperCase(), 115, 28, ClientGuiUtils.brandingIconColor.getRGB(), 0.7F);
+        LuxClient.Fonts.textBold.drawString(this.getWindowName().toUpperCase(), 115, 29, ClientGuiUtils.brandingIconColor.getRGB());
 
         GlStateManager.color(1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(new ResourceLocation("lux/logo.png"));
         Gui.drawModalRectWithCustomSizedTexture(6, 6, 0, 0, 15, 15, 15, 15);
 
-        LuxClient.Fonts.titleBold.drawStringScaled("LUX", 24, 9, -1, 0.53F);
-        LuxClient.Fonts.titleThin.drawStringScaled("CLIENT", 42, 9, -1, 0.53F);
+        LuxClient.Fonts.titleBold.drawStringScaled("LUX", 24, 8, -1, 0.53F);
+        LuxClient.Fonts.titleThin.drawStringScaled("CLIENT", 40, 8, -1, 0.53F);
 
         for (UiComponent c : this.draggedComponents) {
             if(c.isVisible()) {

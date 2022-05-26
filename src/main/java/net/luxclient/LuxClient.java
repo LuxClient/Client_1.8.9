@@ -63,7 +63,8 @@ public class LuxClient {
         public static final CustomFontRenderer titleBold = new CustomFontRenderer("title_bold", 30);
         public static final CustomFontRenderer titleThin = new CustomFontRenderer("title_thin", 30);
         public static final CustomFontRenderer text = new CustomFontRenderer("normal", 12);
-        public static final CustomFontRenderer textBold = new CustomFontRenderer("normal_bold", 16);
+        public static final CustomFontRenderer textBold = new CustomFontRenderer("normal_bold", 12);
+        public static final CustomFontRenderer hud = new CustomFontRenderer("mods", 15);
 
     }
 

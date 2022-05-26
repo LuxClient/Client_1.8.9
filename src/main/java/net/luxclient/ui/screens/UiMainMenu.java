@@ -26,7 +26,7 @@ public class UiMainMenu extends UiScreen {
         GL11.glColor3f(1.0F, 1.0F, 1.0F);
         Gui.drawModalRectWithCustomSizedTexture(this.width / 2 - 26, this.height / 2 - 80, 0, 0, 52, 52, 52, 52);
 
-        LuxClient.Fonts.titleBold.drawCenteredTextScaled(LuxClient.NAME.toUpperCase(), this.width / 2, this.height / 2 - 27, -1, 0.6F);
+        LuxClient.Fonts.titleBold.drawCenteredTextScaled(LuxClient.NAME.toUpperCase(), this.width / 2, this.height / 2 - 28, -1, 0.6F);
     }
 
     @Override
