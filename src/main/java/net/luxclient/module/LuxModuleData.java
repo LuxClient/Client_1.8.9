@@ -8,5 +8,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface LuxModuleData {
-    String fileName();
+    String name();
+    String description();
+    Category category();
+    String[] aliases() default {};
 }

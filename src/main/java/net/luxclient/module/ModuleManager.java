@@ -2,17 +2,21 @@ package net.luxclient.module;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import hex.event.EventManager;
 import hex.event.EventTarget;
+import lombok.Getter;
 import lombok.SneakyThrows;
+import net.luxclient.LuxClient;
 import net.luxclient.events.KeyPressEvent;
-import net.luxclient.util.gson.ExcludeStrategy;
+import net.luxclient.events.Render2DEvent;
+import net.luxclient.hud.HudComponent;
+import net.luxclient.ui.screens.settings.UiMoveHud;
+import net.luxclient.ui.screens.settings.UiSettingsTab;
+import net.minecraft.client.Minecraft;
 import org.reflections.Reflections;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -21,13 +25,14 @@ public class ModuleManager {
     private final static String toCheck = "net.luxclient.module.impl";
 
     private final File dataFolder;
+    @Getter
     private final ArrayList<LuxModule> modules = new ArrayList<>();
     private final Set<Class<?>> classes;
     private final Gson gson;
 
     public ModuleManager() {
-        dataFolder = new File("config" + File.separatorChar + "LuxClient");
-        gson = (new GsonBuilder()).setPrettyPrinting().setExclusionStrategies(new ExcludeStrategy()).create();
+        dataFolder = new File("LuxClient");
+        gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         Reflections reflection = new Reflections(toCheck);
         classes = reflection.getTypesAnnotatedWith(LuxModuleData.class);
         EventManager.register(this);
@@ -39,18 +44,9 @@ public class ModuleManager {
             return;
         }
         for (Class<?> clazz : classes) {
-            LuxModuleData luxAnnotation = clazz.getAnnotation(LuxModuleData.class);
-            File config = new File(dataFolder, luxAnnotation.fileName() + ".json");
+            File config = new File(dataFolder, clazz.getAnnotation(LuxModuleData.class).name() + ".json");
             if (!config.exists()) {
-                try {
-                    LuxModule module = (LuxModule) clazz.newInstance();
-                    if (module.isEnabled())
-                        module.onEnable();
-                    saveModule(module);
-                    modules.add(module);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                modules.add(makeDefault(clazz));
                 return;
             }
             try {
@@ -63,6 +59,13 @@ public class ModuleManager {
                 reader.close();
             } catch (Exception e) {
                 e.printStackTrace();
+                if (e instanceof IOException) return;
+                if (e instanceof JsonSyntaxException) {
+                    LuxClient.LOGGER.error("Module " + clazz.getAnnotation(LuxModuleData.class).name() + " has an invalid config file. Returning to default configuration");
+                    modules.add(makeDefault(clazz));
+                    return;
+                }
+                LuxClient.LOGGER.error("Failed to load module " + clazz.getAnnotation(LuxModuleData.class).name());
             }
         }
     }
@@ -77,9 +80,17 @@ public class ModuleManager {
     }
 
     @SneakyThrows
+    private LuxModule makeDefault(Class<?> clazz) {
+        LuxModule module = (LuxModule) clazz.newInstance();
+        if (module.isEnabled())
+            module.onEnable();
+        saveModule(module);
+        return module;
+    }
+
+    @SneakyThrows
     public void saveModule(LuxModule module) {
-        String fileName = module.getClass().getAnnotation(LuxModuleData.class).fileName();
-        File config = new File(dataFolder, fileName + ".json");
+        File config = new File(dataFolder, module.getName() + ".json");
         config.createNewFile();
 
         Writer fileWriter = new FileWriter(config);
@@ -91,9 +102,56 @@ public class ModuleManager {
     public void onKeyEvent(KeyPressEvent e) {
         if (!e.isPressed() || e.getKeyCode() == -1)
             return;
-        for (LuxModule module: modules) {
+        for (LuxModule module : modules) {
             if (module.getKeyCode() == e.getKeyCode()) {
                 module.toggleEnabled();
+            }
+        }
+    }
+
+    public LuxModule getModule(String name) {
+        for (LuxModule module : modules) {
+            if (module.getAliases().contains(name.toLowerCase()) || module.getName().equalsIgnoreCase(name))
+                return module;
+            }
+        return null;
+    }
+
+    public LuxModule getModule(Class<? extends LuxModule> clazz) {
+        for (LuxModule module : modules) {
+            if (module.getClass().equals(clazz)) {
+                return module;
+            }
+        }
+        return null;
+    }
+
+    @EventTarget
+    public void onRender2D(Render2DEvent e) {
+        if (Minecraft.getMinecraft().currentScreen instanceof UiMoveHud ||
+                Minecraft.getMinecraft().currentScreen instanceof UiSettingsTab) {
+            renderDummyHud();
+        } else {
+            renderHud();
+        }
+    }
+
+    public void renderHud() {
+        for (LuxModule module : modules) {
+            if (!module.isEnabled())
+                continue;
+            for (HudComponent component : module.getHudComponents()) {
+                component.render();
+            }
+        }
+    }
+
+    public void renderDummyHud() {
+        for (LuxModule module : modules) {
+            if (!module.isEnabled())
+                continue;
+            for (HudComponent component : module.getHudComponents()) {
+                component.renderDummy();
             }
         }
     }

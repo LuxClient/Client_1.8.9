@@ -6,7 +6,7 @@ import com.google.gson.FieldAttributes;
 public class ExcludeStrategy implements ExclusionStrategy {
     @Override
     public boolean shouldSkipField(FieldAttributes f) {
-        return f.getAnnotation(Exclude.class) != null;
+        return f.getAnnotation(Exclude.class) == null;
     }
 
     @Override

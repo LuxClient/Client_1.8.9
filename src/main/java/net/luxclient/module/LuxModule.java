@@ -1,27 +1,28 @@
 package net.luxclient.module;
 
+import com.google.gson.annotations.Expose;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
+import net.luxclient.hud.HudComponent;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Data
 public abstract class LuxModule {
 
-    private String name;
-
-    private String description;
-
-    private Category category;
-
-    @Setter(value= AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE) @Expose
     private boolean enabled = false;
 
-    @Setter(value=AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
     private boolean forceDisabled = false;
 
+    @Expose
     private int keyCode = -1;
 
-    //private HudComponent hudComponent;
+    protected List<HudComponent> hudComponents;
 
     public void setEnabled(boolean enabled) {
         if (this.forceDisabled)
@@ -46,10 +47,44 @@ public abstract class LuxModule {
         }
     }
 
+    public String getName() {
+        return getClass().getAnnotation(LuxModuleData.class).name();
+    }
+
+    public String getDescription() {
+        return getClass().getAnnotation(LuxModuleData.class).description();
+    }
+
+    public Category getCategory() {
+        return getClass().getAnnotation(LuxModuleData.class).category();
+    }
+
+    public List<String> getAliases() {
+        String[] aliases = this.getClass().getAnnotation(LuxModuleData.class).aliases();
+        return aliases == null ? new ArrayList<>() : Arrays.asList(aliases);
+    }
+
+    public void setHudComponents(HudComponent... hudComponents) {
+        this.hudComponents = Arrays.asList(hudComponents);
+    }
+
+    public void addHudComponent(HudComponent hudComponent) {
+        if (hudComponents == null)
+            hudComponents = new ArrayList<>();
+        hudComponents.add(hudComponent);
+    }
+
+    public void removeHudComponent(HudComponent hudComponent) {
+        if (hudComponents == null)
+            return;
+        hudComponents.remove(hudComponent);
+    }
+
+
     /*public boolean hasHud() {
         return hudComponent != null;
     }*/
 
-    public void onEnable(){System.out.println("Called wrong lol");}
+    public void onEnable(){}
     public void onDisable(){}
 }

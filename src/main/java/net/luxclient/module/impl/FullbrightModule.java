@@ -1,19 +1,18 @@
 package net.luxclient.module.impl;
 
+import com.google.gson.annotations.Expose;
 import net.luxclient.module.Category;
 import net.luxclient.module.LuxModule;
 import net.luxclient.module.LuxModuleData;
 import net.minecraft.client.Minecraft;
 
-@LuxModuleData(fileName = "Fullbright")
+@LuxModuleData(name = "Fullbright", description = "Fullbright module", category = Category.MISC, aliases = {"fullbright", "brightness"})
 public class FullbrightModule extends LuxModule {
 
+    @Expose
     public int gamma = 10;
 
     public FullbrightModule() {
-        this.setName("Fullbright");
-        this.setDescription("Increases the players gamma value.");
-        this.setCategory(Category.MISC);
     }
 
     @Override

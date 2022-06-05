@@ -2,6 +2,7 @@ package net.luxclient;
 
 import hex.event.EventManager;
 import hex.event.EventTarget;
+import lombok.Getter;
 import net.luxclient.events.TickEvent;
 import net.luxclient.module.ModuleManager;
 import net.luxclient.settings.SettingTabsManager;
@@ -9,30 +10,39 @@ import net.luxclient.ui.notification.NotificationHandler;
 import net.luxclient.ui.screens.UiSplashScreen;
 import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.core.Logger;
 import org.lwjgl.opengl.Display;
 
 public class LuxClient {
 
+    @Getter
     private static LuxClient instance;
     public static final String NAME = "Lux Client",
                                 VERSION = "3.0 Beta",
                                 NAMEVER = NAME + " v" + VERSION;
-
+    @Getter
     private static ModuleManager moduleManager;
+    @Getter
     private static NotificationHandler notificationHandler;
 
-    public static void initClient() {
-        UiSplashScreen.update("initialize client");
+    public static final Log LOGGER = LogFactory.getLog("LuxClient");
 
-        instance = new LuxClient();
-        EventManager.register(instance);
-
+    private LuxClient() {
+        instance = this;
         moduleManager = new ModuleManager();
         moduleManager.loadModules();
-
         notificationHandler = new NotificationHandler();
 
+        UiSplashScreen.update("initialize client");
+        EventManager.register(instance);
+
         Display.setTitle(NAMEVER);
+    }
+
+    public static void initClient() {
+        new LuxClient();
     }
 
     public static void shutdownClient() {
@@ -44,18 +54,6 @@ public class LuxClient {
         if(Minecraft.getMinecraft().gameSettings.keyBindings[33].isKeyDown()) {
             SettingTabsManager.openCurrentScreen();
         }
-    }
-
-    public static ModuleManager getModuleManager() {
-        return moduleManager;
-    }
-
-    public static NotificationHandler getNotificationHandler() {
-        return notificationHandler;
-    }
-
-    public static LuxClient getInstance() {
-        return instance;
     }
 
     public static class Fonts {

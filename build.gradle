@@ -22,7 +22,7 @@ buildscript {
 }
 
 plugins {
-    id 'io.franzbecker.gradle-lombok' version '5.0.0'
+    id "io.freefair.lombok" version "4.1.6"
 }
 
 apply plugin: 'net.minecraftforge.gradle.tweaker-client'
