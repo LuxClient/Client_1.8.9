@@ -31,6 +31,7 @@ public abstract class UiScreen extends GuiScreen {
     public UiScreen() {
         this.backgroundTexture = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("background", new DynamicTexture(256, 256));
         this.componentList = new LinkedList<>();
+        mc = Minecraft.getMinecraft();
     }
 
     public abstract void renderScreen(int mouseX, int mouseY, boolean ingame);

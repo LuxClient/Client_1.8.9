@@ -86,6 +86,7 @@ public class UiMainMenu extends UiScreen {
                 break;
 
             case 7:
+                this.mc.displayGuiScreen(new UiPatchNotes());
                 break;
 
             default:
