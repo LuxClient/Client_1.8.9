@@ -11,7 +11,6 @@ import net.luxclient.LuxClient;
 import net.luxclient.events.KeyPressEvent;
 import net.luxclient.events.Render2DEvent;
 import net.luxclient.hud.HudComponent;
-import net.luxclient.ui.screens.settings.UiMoveHud;
 import net.luxclient.ui.screens.settings.UiSettingsTab;
 import net.minecraft.client.Minecraft;
 import org.reflections.Reflections;
@@ -128,7 +127,7 @@ public class ModuleManager {
 
     @EventTarget
     public void onRender2D(Render2DEvent e) {
-        if (Minecraft.getMinecraft().currentScreen instanceof UiMoveHud ||
+        if (/*Minecraft.getMinecraft().currentScreen instanceof UiMoveHud ||*/
                 Minecraft.getMinecraft().currentScreen instanceof UiSettingsTab) {
             renderDummyHud();
         } else {
