@@ -1,6 +1,8 @@
 package net.luxclient.ui.screens.settings;
 
 import net.luxclient.LuxClient;
+import net.luxclient.hud.HudComponent;
+import net.luxclient.module.LuxModule;
 import net.luxclient.settings.SettingTabsManager;
 import net.luxclient.ui.UiComponent;
 import net.luxclient.ui.UiScreen;
@@ -37,6 +39,8 @@ public abstract class UiSettingsTab extends UiScreen {
 
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean ingame) {
+        this.renderHud();
+
         if(windowDragged) {
                 dragX = mouseX - offsetX;
                 dragY = mouseY - offsetY;
@@ -181,6 +185,12 @@ public abstract class UiSettingsTab extends UiScreen {
     }
 
     @Override
+    protected void mouseReleased(int mouseX, int mouseY, int state) {
+        windowDragged = false;
+        super.mouseReleased(mouseX, mouseY, state);
+    }
+
+    @Override
     public void buttonClicked(UiButton button) {
         if(button.getId() == 0) {
             SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_MODS);
@@ -196,6 +206,10 @@ public abstract class UiSettingsTab extends UiScreen {
         }
         if(button.getId() == 7) {
             SettingTabsManager.setCurrentTab(SettingTabsManager.TAB_SCREENSHOTS);
+        }
+
+        if(button.getId() == 3) {
+            this.mc.displayGuiScreen(new UiHudEditor());
         }
 
         if(button.getId() == 4) {
@@ -229,10 +243,14 @@ public abstract class UiSettingsTab extends UiScreen {
         });
     }
 
-    @Override
-    protected void mouseReleased(int mouseX, int mouseY, int state) {
-        windowDragged = false;
-        super.mouseReleased(mouseX, mouseY, state);
+    private void renderHud() {
+        for (LuxModule module : LuxClient.getModuleManager().getModules()) {
+            if (!module.isEnabled() || module.getHudComponents() == null)
+                continue;
+            for (HudComponent component : module.getHudComponents()) {
+                component.renderDummy();
+            }
+        }
     }
 
     @Override

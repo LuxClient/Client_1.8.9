@@ -29,7 +29,7 @@ public class ExampleModule extends LuxModule {
 
     public ExampleModule() {
         setKeyCode(21); //Key is Y
-        super.setHudComponents(new ExampleHud()/*, new ExampleHud(), ExampleHud()*/); //Able to register multiple hud components
+        super.setHudComponents(new ExampleHud(80, 15)/*, new ExampleHud(), ExampleHud()*/); //Able to register multiple hud components
     }
 
     @Override

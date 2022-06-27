@@ -12,7 +12,7 @@ public class Notification {
     protected String name;
     protected NotificationType type;
 
-    private int livingTicks = 100;
+    private int livingTicks = 150;
 
     public Notification(String name, NotificationType type) {
         this.name = name;
@@ -23,15 +23,15 @@ public class Notification {
         Color bottomC;
         String prefix;
         if(type == NotificationType.INFO) {
-            bottomC = new Color(62, 222, 179);
+            bottomC = new Color(62, 222, 179, 150);
             prefix = "Info: ";
 
         } else if (type == NotificationType.WARNING) {
-            bottomC = new Color(255, 223, 126);
+            bottomC = new Color(255, 223, 126, 150);
             prefix = "Warning: ";
 
         } else {
-            bottomC = new Color(245, 86, 86);
+            bottomC = new Color(245, 86, 86, 150);
             prefix = "Error: ";
         }
 
@@ -40,7 +40,7 @@ public class Notification {
 
         ClientGuiUtils.drawRoundedRect((res.getScaledWidth() - width - 2) / 2, 20, width + 4, LuxClient.Fonts.text.FONT_HEIGHT + 6, 2, ClientGuiUtils.brandingSecondBackgroundColor);
         ClientGuiUtils.drawLine((res.getScaledWidth() - width - 2) / 2 + 1, (res.getScaledWidth() - width - 2) / 2 + width + 3, LuxClient.Fonts.text.FONT_HEIGHT + 25, 3.0F, bottomC.getRGB(), true);
-        LuxClient.Fonts.text.drawCenteredString(prefix + this.name, res.getScaledWidth() / 2, 22, -1);
+        LuxClient.Fonts.text.drawCenteredString(prefix + this.name, res.getScaledWidth() / 2, 23, -1);
 
         --livingTicks;
     }

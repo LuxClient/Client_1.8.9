@@ -11,6 +11,7 @@ import net.luxclient.LuxClient;
 import net.luxclient.events.KeyPressEvent;
 import net.luxclient.events.Render2DEvent;
 import net.luxclient.hud.HudComponent;
+import net.luxclient.ui.screens.settings.UiHudEditor;
 import net.luxclient.ui.screens.settings.UiSettingsTab;
 import net.minecraft.client.Minecraft;
 import org.reflections.Reflections;
@@ -127,30 +128,18 @@ public class ModuleManager {
 
     @EventTarget
     public void onRender2D(Render2DEvent e) {
-        if (/*Minecraft.getMinecraft().currentScreen instanceof UiMoveHud ||*/
-                Minecraft.getMinecraft().currentScreen instanceof UiSettingsTab) {
-            renderDummyHud();
-        } else {
+        if (!(Minecraft.getMinecraft().currentScreen instanceof UiHudEditor ||
+                Minecraft.getMinecraft().currentScreen instanceof UiSettingsTab)) {
             renderHud();
         }
     }
 
     public void renderHud() {
         for (LuxModule module : modules) {
-            if (!module.isEnabled())
+            if (!module.isEnabled() || module.getHudComponents() == null)
                 continue;
             for (HudComponent component : module.getHudComponents()) {
                 component.render();
-            }
-        }
-    }
-
-    public void renderDummyHud() {
-        for (LuxModule module : modules) {
-            if (!module.isEnabled())
-                continue;
-            for (HudComponent component : module.getHudComponents()) {
-                component.renderDummy();
             }
         }
     }
