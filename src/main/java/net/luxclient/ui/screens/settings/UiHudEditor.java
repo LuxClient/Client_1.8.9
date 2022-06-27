@@ -58,7 +58,7 @@ public class UiHudEditor extends UiScreen {
 
         for (HudComponent c : this.components) {
             c.renderDummy();
-            ClientGuiUtils.drawOutline(c.getX() - 1, c.getY() - 1, c.getWidth() + 2, c.getHeight() + 2, lineWidth, new Color(137, 255, 254, 100).getRGB());
+            ClientGuiUtils.drawOutline(c.getX(), c.getY(), c.getWidth(), c.getHeight(), lineWidth, new Color(137, 255, 254, 100).getRGB());
         }
 
     }
