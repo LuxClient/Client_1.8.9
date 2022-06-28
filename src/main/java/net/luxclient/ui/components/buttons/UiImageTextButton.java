@@ -45,10 +45,14 @@ public class UiImageTextButton extends UiButton {
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, c);
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.x + this.width, this.y + this.height, 4, lineWidth, ClientGuiUtils.brandingForegroundOutline.getRGB());
 
-        GlStateManager.color(ClientGuiUtils.brandingIconColor.getRed(), ClientGuiUtils.brandingIconColor.getGreen(), ClientGuiUtils.brandingIconColor.getBlue(), ClientGuiUtils.brandingIconColor.getAlpha());
+        GlStateManager.enableBlend();
+        GlStateManager.enableAlpha();
+        GlStateManager.color((float) ClientGuiUtils.brandingIconColor.getRed() / 255, (float) ClientGuiUtils.brandingIconColor.getGreen() / 255, (float) ClientGuiUtils.brandingIconColor.getBlue() / 255, (float) ClientGuiUtils.brandingIconColor.getAlpha() / 255);
         Minecraft.getMinecraft().getTextureManager().bindTexture(image);
         Gui.drawModalRectWithCustomSizedTexture(this.x + 4, this.y + 4, 0, 0, this.height - 8, this.height - 8, this.height - 8, this.height - 8);
 
         LuxClient.Fonts.text.drawString(this.text.toUpperCase(), this.x + this.height, (float) (this.y + (this.height - 6.5) / 2), ClientGuiUtils.brandingIconColor.getRGB());
+        GlStateManager.disableAlpha();
+        GlStateManager.disableBlend();
     }
 }

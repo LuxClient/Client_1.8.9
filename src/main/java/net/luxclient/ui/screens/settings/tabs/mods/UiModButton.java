@@ -59,10 +59,14 @@ public class UiModButton {
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, backgroundColor);
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.x + this.width, this.y + this.height, 4, outline, borderColor.getRGB());
 
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
+        GlStateManager.enableBlend();
+        GlStateManager.enableAlpha();
+        GlStateManager.color((float) ClientGuiUtils.brandingIconColor.getRed() / 255, (float) ClientGuiUtils.brandingIconColor.getGreen() / 255, (float) ClientGuiUtils.brandingIconColor.getBlue() / 255, (float) ClientGuiUtils.brandingIconColor.getAlpha() / 255);
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lux/icons/mods/test.png")); //TODO put mod icon here
         Gui.drawModalRectWithCustomSizedTexture(this.x + this.width / 2 - 17, this.y + 4, 0, 0, 34, 34, 34, 34);
         LuxClient.Fonts.text.drawCenteredString(this.mod.getName().toUpperCase(), this.x + this.width / 2, this.y + 40, ClientGuiUtils.brandingIconColor.getRGB());
+        GlStateManager.disableAlpha();
+        GlStateManager.disableBlend();
     }
 
     public void onClick() {

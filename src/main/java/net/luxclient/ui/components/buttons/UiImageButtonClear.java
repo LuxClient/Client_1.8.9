@@ -17,6 +17,8 @@ public class UiImageButtonClear extends UiButton {
     @Getter
     protected int textX, textY;
 
+    private double hoverFade = 1.0;
+
     public UiImageButtonClear(int id, int x, int y, ResourceLocation image, int textX, int textY, String displayText) {
         super(id, x, y, 14, 14, displayText);
         this.image = image;
@@ -34,9 +36,20 @@ public class UiImageButtonClear extends UiButton {
     @Override
     public void renderComponent(int mouseX, int mouseY, boolean ingame) {
         if(isVisible()) {
-            GlStateManager.color(ClientGuiUtils.brandingIconColor.getRed(), ClientGuiUtils.brandingIconColor.getGreen(), ClientGuiUtils.brandingIconColor.getBlue(), ClientGuiUtils.brandingIconColor.getAlpha());
+            if(isHovered(mouseX, mouseY)) {
+                if(hoverFade < 1.5) hoverFade += 0.05;
+
+            } else {
+                if(hoverFade > 1.0) hoverFade -= 0.05;
+
+            }
+            GlStateManager.enableBlend();
+            GlStateManager.enableAlpha();
+            GlStateManager.color((float) ClientGuiUtils.brandingIconColor.getRed() / 255, (float) ClientGuiUtils.brandingIconColor.getGreen() / 255, (float) ClientGuiUtils.brandingIconColor.getBlue() / 255, (float) (ClientGuiUtils.brandingIconColor.getAlpha() * hoverFade) / 255);
             Minecraft.getMinecraft().getTextureManager().bindTexture(image);
             Gui.drawModalRectWithCustomSizedTexture(this.x, this.y, 0, 0, this.width, this.width, this.width, this.width);
+            GlStateManager.disableAlpha();
+            GlStateManager.disableBlend();
 
             if(!this.text.equals("") && isHovered(mouseX, mouseY))
                 this.renderDisplayText();
