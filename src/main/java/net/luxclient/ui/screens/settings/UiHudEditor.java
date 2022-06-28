@@ -11,8 +11,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -107,6 +109,15 @@ public class UiHudEditor extends UiScreen {
             ) return c;
         }
         return null;
+    }
+
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        if(keyCode == mc.gameSettings.keyBindings[33].getKeyCode() || keyCode == Keyboard.KEY_ESCAPE) {
+            LuxClient.getModuleManager().saveModules();
+            mc.displayGuiScreen(null);
+        }
+        super.keyTyped(typedChar, keyCode);
     }
 
     @Override

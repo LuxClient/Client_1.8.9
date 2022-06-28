@@ -18,6 +18,7 @@ import org.reflections.Reflections;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class ModuleManager {
@@ -29,6 +30,10 @@ public class ModuleManager {
     private final ArrayList<LuxModule> modules = new ArrayList<>();
     private final Set<Class<?>> classes;
     private final Gson gson;
+
+    // This list contains all modules whose values changed while the settings-gui was open. After the gui closed it is emptied
+    @Getter
+    private List<LuxModule> modulesChanged = new ArrayList<>();
 
     public ModuleManager() {
         dataFolder = new File("LuxClient");
@@ -96,6 +101,10 @@ public class ModuleManager {
         Writer fileWriter = new FileWriter(config);
         gson.toJson(module, fileWriter);
         fileWriter.close();
+    }
+
+    public void saveModules() {
+        modulesChanged.forEach(m -> saveModule(m));
     }
 
     @EventTarget

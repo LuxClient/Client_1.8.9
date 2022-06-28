@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
+import net.luxclient.LuxClient;
 import net.luxclient.hud.HudComponent;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public abstract class LuxModule {
     }
 
     public void toggleEnabled() {
+        LuxClient.getModuleManager().getModulesChanged().add(this);
         if (isEnabled()) {
             onDisable();
             setEnabled(false);

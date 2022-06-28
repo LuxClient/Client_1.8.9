@@ -40,7 +40,6 @@ public class UiModButton {
                 hoverFade -= 0.005;
             }
         }
-        System.out.println(hoverFade);
 
         Color backgroundColor;
         Color borderColor;
