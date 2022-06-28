@@ -4,6 +4,7 @@ import fr.litarvan.openauth.microsoft.MicrosoftAuthResult;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
 import net.luxclient.LuxClient;
+import net.luxclient.mixins.client.AccesorMinecraft;
 import net.luxclient.ui.UiScreen;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.minecraft.client.Minecraft;
@@ -72,14 +73,16 @@ public class UiAccountManager extends UiScreen {
         if(result == null) return;
         Session s = new Session(result.getProfile().getName(), result.getProfile().getId(), result.getAccessToken(), Session.Type.LEGACY.name());
 
-        try {
+        ((AccesorMinecraft) Minecraft.getMinecraft()).setSession(s);
+
+        /*try {
             Field field = Minecraft.class.getDeclaredField("session");
             field.setAccessible(true);
             field.set(Minecraft.getMinecraft(), s);
 
         } catch (NoSuchFieldException | IllegalAccessException e) {
             LuxClient.LOGGER.error("Unable to update session!");
-        }
+        }*/
     }
 
     @Override
