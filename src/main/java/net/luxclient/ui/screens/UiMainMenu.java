@@ -3,10 +3,9 @@ package net.luxclient.ui.screens;
 import net.luxclient.LuxClient;
 import net.luxclient.settings.SettingTabsManager;
 import net.luxclient.ui.UiScreen;
-import net.luxclient.ui.components.UiAccountPanel;
+import net.luxclient.ui.account.UiAccountPanel;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.luxclient.ui.components.buttons.UiImageButton;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
@@ -45,7 +44,7 @@ public class UiMainMenu extends UiScreen {
 
         this.componentList.add(new UiImageButton(6, this.width - 23, 5, new ResourceLocation("lux/icons/close.png"), this.width - 21, 28, "Quit"));
 
-        this.accountPanel = new UiAccountPanel(this.width - 128, 5, Minecraft.getMinecraft().getSession());
+        this.accountPanel = new UiAccountPanel(this.width - 128, 5);
         this.componentList.add(accountPanel);
     }
 
