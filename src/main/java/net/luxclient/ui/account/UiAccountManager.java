@@ -13,8 +13,6 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.Session;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Objects;
 
 public class UiAccountManager extends UiScreen {
 
