@@ -12,13 +12,14 @@ public class FpsDisplayHud extends HudComponent {
 
     @Override
     public void render() {
-        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor.getRGB());
+        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor);
         font.drawCenteredString("FPS: " + Minecraft.getDebugFPS(), this.getX() + this.width / 2, (float) (this.y + (this.height - font.FONT_HEIGHT - 1) / 2), -1);
+        System.out.println("FPS Module");
     }
 
     @Override
     public void renderDummy() {
-        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor.getRGB());
+        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor);
         font.drawCenteredString("FPS: 1000", this.getX() + this.width / 2, (float) (this.y + (this.height - font.FONT_HEIGHT - 1) / 2), -1);
     }
 }

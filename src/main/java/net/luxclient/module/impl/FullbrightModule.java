@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 @LuxModuleData(name = "Fullbright", description = "Fullbright module", category = Category.MISC, aliases = {"brightness", "light"})
 public class FullbrightModule extends LuxModule {
 
+    @Expose
     public int gamma = 10;
 
     @Override

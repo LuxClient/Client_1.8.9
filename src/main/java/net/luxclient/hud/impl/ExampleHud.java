@@ -13,13 +13,13 @@ public class ExampleHud extends HudComponent {
 
     @Override
     public void render() {
-        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor.getRGB());
+        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor);
         font.drawCenteredString("Example Mod", this.getX() + this.width / 2, (float) (this.y + (this.height - font.FONT_HEIGHT - 1) / 2), -1);
     }
 
     @Override
     public void renderDummy() {
-        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor.getRGB());
+        Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor);
         font.drawCenteredString("Example Dummy", this.getX() + this.width / 2, (float) (this.y + (this.height - font.FONT_HEIGHT - 1) / 2), -1);
     }
 }

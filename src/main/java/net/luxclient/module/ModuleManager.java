@@ -3,12 +3,10 @@ package net.luxclient.module;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import hex.event.EventManager;
 import hex.event.EventTarget;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import net.luxclient.LuxClient;
-import net.luxclient.events.KeyPressEvent;
 import net.luxclient.events.Render2DEvent;
 import net.luxclient.hud.HudComponent;
 import net.luxclient.ui.screens.settings.UiHudEditor;
@@ -40,7 +38,6 @@ public class ModuleManager {
         gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         Reflections reflection = new Reflections(toCheck);
         classes = reflection.getTypesAnnotatedWith(LuxModuleData.class);
-        EventManager.register(this);
     }
 
     public void loadModules() {
@@ -105,17 +102,6 @@ public class ModuleManager {
 
     public void saveModules() {
         modulesChanged.forEach(m -> saveModule(m));
-    }
-
-    @EventTarget
-    public void onKeyEvent(KeyPressEvent e) {
-        if (!e.isPressed() || e.getKeyCode() == -1)
-            return;
-        for (LuxModule module : modules) {
-            if (module.getKeyCode() == e.getKeyCode()) {
-                module.toggleEnabled();
-            }
-        }
     }
 
     public LuxModule getModule(String name) {

@@ -37,7 +37,7 @@ public class UiModButton {
 
         } else {
             if(hoverFade > 0.0) {
-                hoverFade -= 0.005;
+                hoverFade -= 0.0025;
             }
         }
 

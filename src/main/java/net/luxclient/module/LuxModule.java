@@ -21,8 +21,6 @@ public abstract class LuxModule {
     private boolean forceDisabled = false;
 
     @Expose
-    private int keyCode = -1;
-
     protected List<HudComponent> hudComponents;
 
     public void setEnabled(boolean enabled) {

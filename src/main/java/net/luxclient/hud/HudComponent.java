@@ -1,15 +1,17 @@
 package net.luxclient.hud;
 
+import com.google.gson.annotations.Expose;
 import lombok.Getter;
 import lombok.Setter;
 import net.luxclient.LuxClient;
 import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 
 import java.awt.Color;
 
-public abstract class HudComponent {
+public class HudComponent {
 
     protected Minecraft mc = Minecraft.getMinecraft();
     protected LuxClient luxClient = LuxClient.getInstance();
@@ -18,19 +20,26 @@ public abstract class HudComponent {
     private ScaledResolution res = new ScaledResolution(mc);
 
     @Getter
-    protected int x, y;
+    @Expose
+    protected int x = 3, y = 3;
     @Getter @Setter
+    @Expose
     protected int width, height;
     @Getter @Setter
-    protected Color backgroundColor = new Color(0, 0, 0, 120);
+    @Expose
+    protected int backgroundColor = new Color(0, 0, 0, 120).getRGB();
 
     public HudComponent(int width, int height) {
         this.width = width;
         this.height = height;
     }
 
-    abstract public void render();
-    abstract public void renderDummy();
+    public void render() {
+        System.out.println("Hud Component");
+    }
+    public void renderDummy() {
+        this.render();
+    }
 
     public double getRelativeX() {
         return res.getScaledWidth() / x;
