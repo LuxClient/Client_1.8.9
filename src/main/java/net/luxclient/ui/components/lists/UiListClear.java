@@ -1,40 +1,47 @@
 package net.luxclient.ui.components.lists;
 
-import net.luxclient.ui.UiScreen;
-import net.luxclient.ui.components.buttons.UiButton;
+import net.luxclient.ui.UiComponent;
+import net.luxclient.util.ScissorsUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import java.io.IOException;
+import javax.swing.plaf.basic.BasicTreeUI;
 import java.util.List;
 
-public abstract class UiListClear extends UiScreen {
+public class UiListClear extends UiComponent {
 
-    protected int x, y;
-    protected int width, height;
+    protected static final float SCROLL_INTENSITY = 12.0F;
+
+    protected final Minecraft mc = Minecraft.getMinecraft();
+
     protected int entryHeight;
     protected List<UiListEntry> entries;
+    protected int mouseX, mouseY;
 
     protected float scrollingHeight;
 
     public UiListClear(int x, int y, int width, int height, int entryHeight, List<UiListEntry> entries) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        super(x, y, width, height);
         this.entryHeight = entryHeight;
         this.entries = entries;
     }
 
     @Override
-    public void renderScreen(int mouseX, int mouseY, boolean ingame) {
-        mc = Minecraft.getMinecraft();
+    public void renderComponent(int mouseX, int mouseY, boolean ingame) {
+        this.mouseX = mouseX;
+        this.mouseY = mouseY;
+
         ScaledResolution res = new ScaledResolution(mc);
 
+        int bottom = -(entryHeight * entries.size() - height);
+        if (scrollingHeight < bottom) scrollingHeight = bottom;
+        if (scrollingHeight > 0) scrollingHeight = 0;
+
         GL11.glPushMatrix();
-        //GL11.glEnable(GL11.GL_SCISSOR_TEST);
+        ScissorsUtil.enable();
         GL11.glTranslatef(0, scrollingHeight, 0);
 
         int slotHeight = 0;
@@ -49,27 +56,22 @@ public abstract class UiListClear extends UiScreen {
 
         }
 
-        /*GL11.glScissor((int) ((x * mc.displayWidth) / res.getScaledWidth()),
-                (int) (((res.getScaledHeight() - y) * mc.displayHeight) / res.getScaledHeight()),
-                (int) (width * mc.displayWidth / res.getScaledWidth()),
-                (int) (height * mc.displayHeight / res.getScaledHeight()));*/
-        //GL11.glDisable(GL11.GL_SCISSOR_TEST);
+        ScissorsUtil.select(this.x, this.y, this.width, this.height);
+        ScissorsUtil.disable();
         GL11.glPopMatrix();
     }
 
-    @Override
-    public void initComponents() {
+    public void keyTyped(int keyCode) {
+        if (keyCode == Keyboard.KEY_UP)
+            scrollingHeight += SCROLL_INTENSITY;
 
+        if (keyCode == Keyboard. KEY_DOWN)
+            scrollingHeight -= SCROLL_INTENSITY;
     }
 
-    @Override
-    public void buttonClicked(UiButton button) {
-
+    public void handleMouseInput() {
+        if (this.isHovered(mouseX, mouseY))
+            scrollingHeight += Integer.compare(Mouse.getEventDWheel(), 0) * SCROLL_INTENSITY;
     }
 
-    @Override
-    public void handleMouseInput() throws IOException {
-        super.handleMouseInput();
-        scrollingHeight += Integer.compare(Mouse.getEventDWheel(), 0) * 5F;
-    }
 }

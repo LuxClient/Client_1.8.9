@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.Session;
+import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
 
@@ -100,6 +101,12 @@ public class UiAccountManager extends UiScreen {
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
+        if (keyCode == Keyboard.KEY_RETURN) {
+            if (emailFiled.getText().equals("") && passwordField.getText().equals("")) return;
+            this.login(emailFiled.getText(), passwordField.getText());
+            mc.displayGuiScreen(parent);
+        }
+
         emailFiled.textboxKeyTyped(typedChar, keyCode);
         passwordField.textboxKeyTyped(typedChar, keyCode);
     }

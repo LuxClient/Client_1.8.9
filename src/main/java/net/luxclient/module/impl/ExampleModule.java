@@ -2,9 +2,6 @@ package net.luxclient.module.impl;
 
 import com.google.gson.annotations.Expose;
 import hex.event.EventManager;
-import hex.event.EventTarget;
-import net.luxclient.events.TickEvent;
-import net.luxclient.hud.HudComponent;
 import net.luxclient.hud.impl.ExampleHud;
 import net.luxclient.module.Category;
 import net.luxclient.module.LuxModule;
