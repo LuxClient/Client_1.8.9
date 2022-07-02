@@ -33,9 +33,7 @@ public class HudComponent {
         this.height = height;
     }
 
-    public void render() {
-        System.out.println("Hud Component");
-    }
+    public void render() {}
     public void renderDummy() {
         this.render();
     }

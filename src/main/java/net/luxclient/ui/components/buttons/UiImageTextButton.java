@@ -41,7 +41,7 @@ public class UiImageTextButton extends UiButton {
         }
 
         Color c = new Color(ClientGuiUtils.brandingForegroundColor.getRed(), ClientGuiUtils.brandingForegroundColor.getGreen(), ClientGuiUtils.brandingForegroundColor.getBlue(), (int) (ClientGuiUtils.brandingForegroundColor.getAlpha() * hoverFade));
-        float lineWidth = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor();
+        float lineWidth = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor() / 2;
         ClientGuiUtils.drawRoundedRect(this.x, this.y, this.width, this.height, 3, c);
         ClientGuiUtils.drawRoundedOutline(this.x, this.y, this.x + this.width, this.y + this.height, 4, lineWidth, ClientGuiUtils.brandingForegroundOutline.getRGB());
 
