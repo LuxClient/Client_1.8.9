@@ -12,7 +12,6 @@ import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.logging.log4j.core.Logger;
 import org.lwjgl.opengl.Display;
 
 public class LuxClient {
