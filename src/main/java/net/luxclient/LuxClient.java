@@ -29,8 +29,6 @@ public class LuxClient {
     @Getter
     private static NotificationHandler notificationHandler;
 
-    public static DiscordRP discord = new DiscordRP();
-
     public static final Logger LOGGER = LogManager.getLogger("LuxClient");
 
     private LuxClient() {
@@ -38,7 +36,7 @@ public class LuxClient {
         moduleManager = new ModuleManager();
         moduleManager.loadModules();
         notificationHandler = new NotificationHandler();
-        discord.startDiscordRPC();
+        DiscordRP.getInstance().startDiscordRPC();
 
         new KeyBindings();
 
@@ -54,7 +52,7 @@ public class LuxClient {
 
     public static void shutdownClient() {
         EventManager.unregister(instance);
-        discord.shutdownDiscordRPC();
+        DiscordRP.getInstance().shutdownDiscordRPC();
     }
 
     @EventTarget

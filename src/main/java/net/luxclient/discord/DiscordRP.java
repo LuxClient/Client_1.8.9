@@ -30,6 +30,11 @@ public class DiscordRP {
         DiscordRPC.discordShutdown();
     }
 
+    /**
+     * Discord Update method.
+     * @param firstLine String first line of the RPC
+     * @param secondLine String second line of the RPC
+     */
     public void update(String firstLine, String secondLine) {
         DiscordRichPresence.Builder b = new DiscordRichPresence.Builder(secondLine);
         b.setBigImage("logo", "Lux Client - Playing");
