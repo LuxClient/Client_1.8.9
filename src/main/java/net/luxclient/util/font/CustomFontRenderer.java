@@ -67,7 +67,7 @@ public class CustomFontRenderer {
             return this.getFontFromInput("/assets/minecraft/lux/font/Product-Sans.ttf");
         }
         if (name.equalsIgnoreCase("normal_bold")) {
-            return this.getFontFromInput("/assets/minecraft/lux/font/Calibri-Bold.ttf");
+            return this.getFontFromInput("/assets/minecraft/lux/font/Inter-Semibold.ttf");
         }
         if(name.equalsIgnoreCase("mods")) {
             return this.getFontFromInput("/assets/minecraft/lux/font/SFUIText-Semibold.ttf");

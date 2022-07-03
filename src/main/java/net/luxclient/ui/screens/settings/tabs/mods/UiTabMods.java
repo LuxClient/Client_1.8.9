@@ -15,7 +15,7 @@ public class UiTabMods extends UiSettingsTab {
 
     @Override
     public void initComponents() {
-        button1 = new UiModButton(LuxClient.getModuleManager().getModule(ExampleModule.class), 115, 36) {
+        button1 = new UiModButton(LuxClient.getModuleManager().getModule(ExampleModule.class), 115, 40) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -24,7 +24,7 @@ public class UiTabMods extends UiSettingsTab {
                         mouseY < y + dragY + this.height;
             }
         };
-        button2 = new UiModButton(LuxClient.getModuleManager().getModule(FpsModule.class), 190, 36) {
+        button2 = new UiModButton(LuxClient.getModuleManager().getModule(FpsModule.class), 190, 40) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&
@@ -33,7 +33,7 @@ public class UiTabMods extends UiSettingsTab {
                         mouseY < y + dragY + this.height;
             }
         };
-        button3 = new UiModButton(LuxClient.getModuleManager().getModule(FullbrightModule.class), 265, 36) {
+        button3 = new UiModButton(LuxClient.getModuleManager().getModule(FullbrightModule.class), 265, 40) {
             @Override
             public boolean isHovered(int mouseX, int mouseY) {
                 return mouseX >= x + dragX &&

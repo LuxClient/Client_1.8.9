@@ -22,7 +22,7 @@ public class LuxClient {
     @Getter
     private static LuxClient instance;
     public static final String NAME = "Lux Client",
-                                VERSION = "3.0 Beta",
+                                VERSION = "3.0 Closed Beta",
                                 NAMEVER = NAME + " v" + VERSION;
     @Getter
     private static ModuleManager moduleManager;
