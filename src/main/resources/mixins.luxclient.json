@@ -1,11 +1,13 @@
 {
   "required": true,
+  "minVersion": "0.6",
   "compatibilityLevel": "JAVA_8",
   "package": "net.luxclient.mixins",
   "refmap": "mixins.luxclient.json",
+  "target": "@env(DEFAULT)",
   "verbose": true,
   "mixins": [
-    "client.AccesorMinecraft",
+    "client.AccessorMinecraft",
     "client.MixinGameSettings",
     "client.MixinMinecraft",
     "entity.MixinEntityPlayer",

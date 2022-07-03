@@ -17,7 +17,7 @@ public class MixinEntityRenderer {
     }
 
     @Inject(method = "updateCameraAndRender", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiScreen;drawScreen(IIF)V", shift = At.Shift.AFTER))
-    private void updateCamerAndRender(float partialTicks, long nanoTime, CallbackInfo callbackInfo) {
+    private void updateCameraAndRender(float partialTicks, long nanoTime, CallbackInfo callbackInfo) {
         LuxClient.getNotificationHandler().renderNotifications();
     }
 

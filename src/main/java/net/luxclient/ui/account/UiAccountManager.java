@@ -4,7 +4,7 @@ import fr.litarvan.openauth.microsoft.MicrosoftAuthResult;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
 import net.luxclient.LuxClient;
-import net.luxclient.mixins.client.AccesorMinecraft;
+import net.luxclient.mixins.client.AccessorMinecraft;
 import net.luxclient.ui.UiScreen;
 import net.luxclient.ui.components.buttons.UiButton;
 import net.minecraft.client.Minecraft;
@@ -72,7 +72,7 @@ public class UiAccountManager extends UiScreen {
         if(result == null) return;
         Session s = new Session(result.getProfile().getName(), result.getProfile().getId(), result.getAccessToken(), Session.Type.LEGACY.name());
 
-        ((AccesorMinecraft) Minecraft.getMinecraft()).setSession(s);
+        ((AccessorMinecraft) Minecraft.getMinecraft()).setSession(s);
 
         /*try {
             Field field = Minecraft.class.getDeclaredField("session");
