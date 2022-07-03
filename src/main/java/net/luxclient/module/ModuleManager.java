@@ -31,7 +31,7 @@ public class ModuleManager {
 
     // This list contains all modules whose values changed while the settings-gui was open. After the gui closed it is emptied
     @Getter
-    private List<LuxModule> modulesChanged = new ArrayList<>();
+    private final List<LuxModule> modulesChanged = new ArrayList<>();
 
     public ModuleManager() {
         dataFolder = new File("LuxClient");
@@ -101,7 +101,7 @@ public class ModuleManager {
     }
 
     public void saveModules() {
-        modulesChanged.forEach(m -> saveModule(m));
+        modulesChanged.forEach(this::saveModule);
     }
 
     public LuxModule getModule(String name) {
