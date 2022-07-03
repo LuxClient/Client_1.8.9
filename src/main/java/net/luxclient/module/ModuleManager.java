@@ -131,7 +131,7 @@ public class ModuleManager {
 
     public void renderHud() {
         for (LuxModule module : modules) {
-            if (!module.isEnabled() || module.getHudComponents() != null)
+            if (!module.isEnabled() || module.getHudComponents() == null)
                 continue;
             for (HudComponent component : module.getHudComponents()) {
                 component.render();
