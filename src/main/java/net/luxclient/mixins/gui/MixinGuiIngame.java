@@ -17,9 +17,4 @@ public class MixinGuiIngame {
         new Render2DEvent(partialTicks).call();
     }
 
-    @Inject(method = "renderGameOverlay", at = @At("RETURN"))
-    private void runTick (CallbackInfo info) {
-        LuxClient.getModuleManager().renderHud();
-    }
-
 }
