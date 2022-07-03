@@ -8,10 +8,11 @@ import net.luxclient.module.ModuleManager;
 import net.luxclient.settings.SettingTabsManager;
 import net.luxclient.ui.notification.NotificationHandler;
 import net.luxclient.ui.screens.UiSplashScreen;
+import net.luxclient.util.KeyBindings;
 import net.luxclient.util.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.Display;
 
 public class LuxClient {
@@ -26,13 +27,15 @@ public class LuxClient {
     @Getter
     private static NotificationHandler notificationHandler;
 
-    public static final Log LOGGER = LogFactory.getLog("LuxClient");
+    public static final Logger LOGGER = LogManager.getLogger("LuxClient");
 
     private LuxClient() {
         instance = this;
         moduleManager = new ModuleManager();
         moduleManager.loadModules();
         notificationHandler = new NotificationHandler();
+
+        new KeyBindings();
 
         UiSplashScreen.update("initialize client");
         EventManager.register(instance);

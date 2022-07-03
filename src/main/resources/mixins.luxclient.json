@@ -8,7 +8,6 @@
   "verbose": true,
   "mixins": [
     "client.AccessorMinecraft",
-    "client.MixinGameSettings",
     "client.MixinMinecraft",
     "entity.MixinEntityPlayer",
     "gui.MixinGuiIngame",
