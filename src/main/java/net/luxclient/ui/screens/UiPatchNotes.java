@@ -24,59 +24,8 @@ public class UiPatchNotes extends UiScreen {
     private void createEntries() {
         entries = new ArrayList<>();
 
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
-        entries.add(new PlaceholderEntry());
-
-        entries.add(new UiHeadingEntry("TEST HEADING"));
-        entries.add(new UiNoteEntry("Test lol"));
-        entries.add(new UiNoteEntry("another test"));
+        entries.add(new UiHeadingEntry("NO CHANGES"));
+        entries.add(new UiNoteEntry("All updates in the client will show up here"));
     }
 
     @Override

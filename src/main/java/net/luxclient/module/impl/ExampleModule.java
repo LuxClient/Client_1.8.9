@@ -31,13 +31,13 @@ public class ExampleModule extends LuxModule {
     @Override
     public void onEnable(){
         EventManager.register(this);
-        System.out.println("Enabled");
+        //System.out.println("Enabled");
     }
 
     @Override
     public void onDisable() {
         EventManager.unregister(this);
-        System.out.println("Disabled");
+        //System.out.println("Disabled");
     }
 
     /*@EventTarget

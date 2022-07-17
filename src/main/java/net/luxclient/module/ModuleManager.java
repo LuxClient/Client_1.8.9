@@ -50,7 +50,6 @@ public class ModuleManager {
     public void loadModules() {
         if (!dataFolder.exists()) {
             loadDefaults();
-            return;
         }
         for (Class<?> clazz : classes) {
             File config = new File(dataFolder, clazz.getAnnotation(LuxModuleData.class).name() + ".json");
