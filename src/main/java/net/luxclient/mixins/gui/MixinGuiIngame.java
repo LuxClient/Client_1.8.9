@@ -1,6 +1,5 @@
 package net.luxclient.mixins.gui;
 
-import net.luxclient.LuxClient;
 import net.luxclient.events.Render2DEvent;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.ScaledResolution;

@@ -3,6 +3,7 @@ package net.luxclient.module;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import hex.event.EventManager;
 import hex.event.EventTarget;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -38,6 +39,12 @@ public class ModuleManager {
         gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         Reflections reflection = new Reflections(toCheck);
         classes = reflection.getTypesAnnotatedWith(LuxModuleData.class);
+
+        EventManager.register(this);
+    }
+
+    public void unregisterEvents() {
+        EventManager.unregister(this);
     }
 
     public void loadModules() {
@@ -133,9 +140,11 @@ public class ModuleManager {
         for (LuxModule module : modules) {
             if (!module.isEnabled() || module.getHudComponents() == null)
                 continue;
+
             for (HudComponent component : module.getHudComponents()) {
                 component.render();
             }
         }
     }
+
 }

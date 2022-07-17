@@ -10,7 +10,7 @@ import net.minecraft.client.gui.ScaledResolution;
 
 import java.awt.Color;
 
-public class HudComponent {
+public abstract class HudComponent {
 
     protected Minecraft mc = Minecraft.getMinecraft();
     protected LuxClient luxClient = LuxClient.getInstance();
@@ -19,13 +19,10 @@ public class HudComponent {
     private ScaledResolution res = new ScaledResolution(mc);
 
     @Getter
-    @Expose
     protected int x = 3, y = 3;
     @Getter @Setter
-    @Expose
     protected int width, height;
     @Getter @Setter
-    @Expose
     protected int backgroundColor = new Color(0, 0, 0, 120).getRGB();
 
     public HudComponent(int width, int height) {
@@ -33,10 +30,8 @@ public class HudComponent {
         this.height = height;
     }
 
-    public void render() {}
-    public void renderDummy() {
-        this.render();
-    }
+    abstract public void render();
+    abstract public void renderDummy();
 
     public double getRelativeX() {
         return res.getScaledWidth() / x;

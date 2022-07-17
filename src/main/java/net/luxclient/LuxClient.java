@@ -3,7 +3,6 @@ package net.luxclient;
 import hex.event.EventManager;
 import hex.event.EventTarget;
 import lombok.Getter;
-import net.arikia.dev.drpc.DiscordRPC;
 import net.luxclient.discord.DiscordRP;
 import net.luxclient.events.TickEvent;
 import net.luxclient.module.ModuleManager;
@@ -32,6 +31,8 @@ public class LuxClient {
     public static final Logger LOGGER = LogManager.getLogger("LuxClient");
 
     private LuxClient() {
+        UiSplashScreen.update("initialize client");
+
         instance = this;
         moduleManager = new ModuleManager();
         moduleManager.loadModules();
@@ -40,9 +41,7 @@ public class LuxClient {
 
         new KeyBindings();
 
-        UiSplashScreen.update("initialize client");
         EventManager.register(instance);
-
         Display.setTitle(NAMEVER);
     }
 
@@ -52,6 +51,8 @@ public class LuxClient {
 
     public static void shutdownClient() {
         EventManager.unregister(instance);
+        moduleManager.unregisterEvents();
+
         DiscordRP.getInstance().shutdownDiscordRPC();
     }
 

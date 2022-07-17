@@ -20,7 +20,6 @@ public abstract class LuxModule {
     @Setter(value = AccessLevel.NONE)
     private boolean forceDisabled = false;
 
-    @Expose
     protected List<HudComponent> hudComponents;
 
     public void setEnabled(boolean enabled) {

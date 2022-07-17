@@ -20,6 +20,6 @@ public class FpsDisplayHud extends HudComponent {
     @Override
     public void renderDummy() {
         Gui.drawRect(getX(), getY(), getX() + getWidth(), getY() + getHeight(), this.backgroundColor);
-        font.drawCenteredString("FPS: 1000", this.getX() + this.width / 2, (float) (this.y + (this.height - font.FONT_HEIGHT - 1) / 2), -1);
+        font.drawCenteredString("FPS: 0000", this.getX() + this.width / 2, (float) (this.y + (this.height - font.FONT_HEIGHT - 1) / 2), -1);
     }
 }
