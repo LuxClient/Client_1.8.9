@@ -1,12 +1,18 @@
 package net.luxclient.ui;
 
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.gui.Gui;
 
 public abstract class UiComponent extends Gui {
 
+    @Getter
     protected int x, y;
+    @Getter
     protected int width, height;
+    @Getter @Setter
     protected boolean enabled;
+    @Getter @Setter
     protected boolean visible = true;
 
     public UiComponent(int x, int y, int width, int height) {
@@ -24,22 +30,6 @@ public abstract class UiComponent extends Gui {
         return mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
@@ -50,19 +40,4 @@ public abstract class UiComponent extends Gui {
         this.height = height;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
 }
