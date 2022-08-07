@@ -1,6 +1,10 @@
 package net.luxclient.ui;
 
+import net.luxclient.LuxClient;
+import net.luxclient.ui.components.buttons.UiButton;
+import net.luxclient.util.ClientPanorama;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -12,32 +16,51 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
 
+import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class UiScreen extends GuiScreen {
 
-    private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("textures/gui/title/background/panorama_0.png"), new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"), new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"), new ResourceLocation("textures/gui/title/background/panorama_5.png")};
     private static int panoramaTimer;
     private ResourceLocation backgroundTexture;
 
     protected List<UiComponent> componentList;
+    protected GuiScreen parenScreen;
 
     public UiScreen() {
-        this.backgroundTexture = this.mc.getTextureManager().getDynamicTextureLocation("background", new DynamicTexture(256, 256));
+        this.backgroundTexture = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("background", new DynamicTexture(256, 256));
         this.componentList = new LinkedList<>();
+        mc = Minecraft.getMinecraft();
     }
 
     public abstract void renderScreen(int mouseX, int mouseY, boolean ingame);
+
+    public abstract void initComponents();
+    public abstract void buttonClicked(UiButton button);
+
+    protected boolean renderVersionString() {
+        return true;
+    }
+    protected boolean renderCopyrightString() { return true; }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         boolean ingame = Minecraft.getMinecraft().theWorld != null && Minecraft.getMinecraft().thePlayer != null;
 
-        if(ingame) {
+        if(!ingame) {
             GlStateManager.disableAlpha();
             this.renderSkybox(mouseX, mouseY, partialTicks);
             GlStateManager.enableAlpha();
+        }
+
+        int color = new Color(255, 255, 255, 100).getRGB();
+        if(renderVersionString()) {
+            LuxClient.Fonts.text.drawString(LuxClient.NAMEVER.toUpperCase(), 5, this.height - 11, color);
+        }
+        if(renderCopyrightString()) {
+            String s = "COPYRIGHT MOJANG AB. DO NOT DISTRIBUTE!";
+            LuxClient.Fonts.text.drawString(s, this.width - LuxClient.Fonts.text.getWidth(s) - 5, this.height - 11, color);
         }
 
         renderScreen(mouseX, mouseY, ingame);
@@ -53,6 +76,46 @@ public abstract class UiScreen extends GuiScreen {
     public void updateScreen() {
         ++panoramaTimer;
         super.updateScreen();
+    }
+
+    @Override
+    public void initGui() {
+        this.componentList.clear();
+        this.initComponents();
+        super.initGui();
+    }
+
+    @Override
+    public boolean doesGuiPauseGame() {
+        return false;
+    }
+
+    public GuiScreen getParenScreen() {
+        return parenScreen;
+    }
+
+    public void setParenScreen(GuiScreen parenScreen) {
+        this.parenScreen = parenScreen;
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        if (mouseButton == 0)
+        {
+            for (int i = 0; i < this.componentList.size(); ++i)
+            {
+                if(this.componentList.get(i) instanceof UiButton) {
+
+                    UiButton button = (UiButton) this.componentList.get(i);
+
+                    if (button.isHovered(mouseX, mouseY))
+                    {
+                        this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+                        this.buttonClicked(button);
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -118,7 +181,7 @@ public abstract class UiScreen extends GuiScreen {
                     GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
                 }
 
-                this.mc.getTextureManager().bindTexture(titlePanoramaPaths[k]);
+                this.mc.getTextureManager().bindTexture(ClientPanorama.getTiles()[k]);
                 worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
                 int l = 255 / (j + 1);
                 float f3 = 0.0F;

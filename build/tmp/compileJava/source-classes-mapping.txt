@@ -1,6 +1,0 @@
-net/luxclient/launch/LuxTweaker.java
- net.luxclient.launch.LuxTweaker
-net/luxclient/LuxClient.java
- net.luxclient.LuxClient
-net/luxclient/mixins/MixinMinecraft.java
- net.luxclient.mixins.MixinMinecraft
